@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: lavender;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#sidebar {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    background-color: white;
+    transition: left 0.3s;
+}
+
+#sidebar.visible {
+    left: 0;
+}
+
+.box {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.success-box {
+    background-color: #d4edda;
+    color: green;
+}
+
+.failure-box {
+    background-color: #f8d7da;
+    color: red;
+}

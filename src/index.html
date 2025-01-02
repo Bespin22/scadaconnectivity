@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScadaConnectivity</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <app-root></app-root>
+    <div id="menu-icon" class="menu-icon" onclick="toggleSidebar()">☰</div>
+
+    <aside id="sidebar">
+        <h2>IP Management</h2>
+        <div id="ip-list"></div>
+        <div class="add-ip-section">
+            <input type="text" id="ipName" placeholder="Enter Name">
+            <input type="text" id="ipAddress" placeholder="Enter IP Address">
+            <button onclick="addIPAddress()">Add IP</button>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <h1>Ping Status</h1>
+        </header>
+        <section id="results"></section>
+    </main>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:3000';
+
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("visible");
+        }
+
+        async function fetchIPs() {
+            const response = await fetch(`${API_BASE_URL}/ping`);
+            const ipStatus = await response.json();
+            updateResults(ipStatus);
+        }
+
+        function updateResults(ipStatus) {
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = ""; // Clear previous results
+
+            ipStatus.forEach((entry) => {
+                const resultBox = document.createElement("div");
+                resultBox.className = `box ${entry.alive ? "success-box" : "failure-box"}`;
+                resultBox.innerHTML = `
+                    <div class="ip-details">
+                        <span class="ip-name">${entry.name} (${entry.ip})</span>
+                        <span class="status">${entry.alive ? "Connected (200)" : "Disconnected"}</span>
+                    </div>
+                `;
+                resultsDiv.appendChild(resultBox);
+            });
+        }
+
+        async function addIPAddress() {
+            const name = document.getElementById("ipName").value.trim();
+            const ip = document.getElementById("ipAddress").value.trim();
+
+            if (name && ip) {
+                await fetch(`${API_BASE_URL}/add-ip`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, ip }),
+                });
+                fetchIPs();
+                document.getElementById("ipName").value = "";
+                document.getElementById("ipAddress").value = "";
+            } else {
+                alert("Please provide both Name and IP Address.");
+            }
+        }
+
+        async function deleteIPAddress(ip) {
+            await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
+            fetchIPs();
+        }
+
+        async function displayIPList() {
+            const ipList = await fetch(`${API_BASE_URL}/ping`).then((res) => res.json());
+            const ipListDiv = document.getElementById("ip-list");
+            ipListDiv.innerHTML = "";
+
+            ipList.forEach((entry) => {
+                const ipItem = document.createElement("div");
+                ipItem.className = "ip-item";
+
+                ipItem.innerHTML = `
+                    <span>${entry.name} (${entry.ip})</span>
+                    <button class="delete" onclick="deleteIPAddress('${entry.ip}')">Delete</button>
+                `;
+                ipListDiv.appendChild(ipItem);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchIPs();
+            displayIPList();
+            setInterval(fetchIPs, 5000); // Ping every 5 seconds
+        });
+    </script>
+</body>
+</html>
