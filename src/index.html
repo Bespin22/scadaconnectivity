@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScadaConnectivity</title>
+    <title>SCADA Connectivity</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <app-root></app-root>
     <div id="menu-icon" class="menu-icon" onclick="toggleSidebar()">☰</div>
 
-    <aside id="sidebar">
+    <aside id="sidebar" class="hidden">
         <h2>IP Management</h2>
         <div id="ip-list"></div>
         <div class="add-ip-section">
@@ -22,7 +21,7 @@
 
     <main>
         <header>
-            <h1>Ping Status</h1>
+            <h1>SCADA Connectivity</h1>
         </header>
         <section id="results"></section>
     </main>
@@ -31,7 +30,7 @@
         const API_BASE_URL = 'http://localhost:3000';
 
         function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("visible");
+            document.getElementById("sidebar").classList.toggle("hidden");
         }
 
         async function fetchIPs() {
@@ -46,11 +45,11 @@
 
             ipStatus.forEach((entry) => {
                 const resultBox = document.createElement("div");
-                resultBox.className = `box ${entry.alive ? "success-box" : "failure-box"}`;
+                resultBox.className = `box ${entry.alive ? "success" : "failure"}`;
                 resultBox.innerHTML = `
                     <div class="ip-details">
-                        <span class="ip-name">${entry.name} (${entry.ip})</span>
-                        <span class="status">${entry.alive ? "Connected (200)" : "Disconnected"}</span>
+                        <span>${entry.name} (${entry.ip})</span>
+                        <span class="status">${entry.alive ? "Connected" : "Disconnected"}</span>
                     </div>
                 `;
                 resultsDiv.appendChild(resultBox);
@@ -68,6 +67,7 @@
                     body: JSON.stringify({ name, ip }),
                 });
                 fetchIPs();
+                displayIPList();
                 document.getElementById("ipName").value = "";
                 document.getElementById("ipAddress").value = "";
             } else {
@@ -78,6 +78,7 @@
         async function deleteIPAddress(ip) {
             await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
             fetchIPs();
+            displayIPList();
         }
 
         async function displayIPList() {

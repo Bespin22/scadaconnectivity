@@ -1,48 +1,81 @@
 body {
     font-family: Arial, sans-serif;
     background-color: lavender;
-    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
     text-align: center;
+    padding: 20px;
+    background-color: #4c4cff;
+    color: white;
 }
 
-#menu-icon {
-    font-size: 24px;
+.menu-icon {
+    font-size: 30px;
     cursor: pointer;
-    margin: 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 #sidebar {
     width: 300px;
+    background-color: white;
+    height: 100%;
     position: fixed;
     top: 0;
-    left: -300px;
-    height: 100%;
-    background-color: white;
-    transition: left 0.3s;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#sidebar.visible {
-    left: 0;
+.hidden {
+    display: none;
+}
+
+.add-ip-section input {
+    margin: 5px 0;
+    width: calc(100% - 20px);
+    padding: 5px;
+}
+
+.add-ip-section button {
+    padding: 5px;
+    background-color: #4c4cff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#results {
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
 .box {
-    padding: 10px;
-    margin: 10px;
     border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    color: white;
+    text-align: center;
 }
 
-.success-box {
-    background-color: #d4edda;
-    color: green;
+.success {
+    background-color: green;
+    border: 2px solid darkgreen;
 }
 
-.failure-box {
-    background-color: #f8d7da;
-    color: red;
+.failure {
+    background-color: red;
+    border: 2px solid darkred;
 }
