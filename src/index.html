@@ -1,108 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCADA Connectivity</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCADA Connectivity</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="menu-icon" class="menu-icon" onclick="toggleSidebar()">☰</div>
+  <nav>
+    <button onclick="showHome()">🏠 Home</button>
+    <button onclick="showIpManagement()">📋 IP Management</button>
+  </nav>
 
-    <aside id="sidebar" class="hidden">
-        <h2>IP Management</h2>
-        <div id="ip-list"></div>
-        <div class="add-ip-section">
-            <input type="text" id="ipName" placeholder="Enter Name">
-            <input type="text" id="ipAddress" placeholder="Enter IP Address">
-            <button onclick="addIPAddress()">Add IP</button>
-        </div>
-    </aside>
+  <main id="main-content">
+    <section id="home">
+      <h1>SCADA Connectivity</h1>
+      <div id="ip-status-container"></div>
+    </section>
 
-    <main>
-        <header>
-            <h1>SCADA Connectivity</h1>
-        </header>
-        <section id="results"></section>
-    </main>
+    <section id="ip-management" class="hidden">
+      
+      <h2>Add New IP</h2>
+      <input type="text" id="ipName" placeholder="Enter Name">
+      <input type="text" id="ipAddress" placeholder="Enter IP Address">
+      <button onclick="addIPAddress()">Add IP</button>
+      <h1>IP Management</h1>
+      <div id="ip-list"></div>
+      
+      <h2>Deleted IPs</h2>
+      <div id="deleted-ip-list"></div>
+    </section>
+  </main>
 
-    <script>
-        const API_BASE_URL = 'http://localhost:3000';
+  <script>
+    const API_BASE_URL = "http://localhost:3000";
 
-        function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("hidden");
-        }
+    function updateIPStatus(ipList) {
+      const container = document.getElementById('ip-status-container');
+      container.innerHTML = '';
 
-        async function fetchIPs() {
-            const response = await fetch(`${API_BASE_URL}/ping`);
-            const ipStatus = await response.json();
-            updateResults(ipStatus);
-        }
+      ipList.forEach((entry) => {
+        const ipBox = document.createElement('div');
+        ipBox.className = `ip-box ${entry.status === "Connected" ? "connected" : "disconnected"}`;
+        ipBox.innerHTML = `
+          <span class="ip-name">${entry.name}</span>
+          <span class="ip-address">(${entry.ip})</span>
+          <span class="ip-status">${entry.status}</span>
+        `;
+        container.appendChild(ipBox);
+      });
+    }
 
-        function updateResults(ipStatus) {
-            const resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML = ""; // Clear previous results
+    async function fetchAndUpdateIPStatus() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/ping`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const ipList = await response.json();
+        updateIPStatus(ipList);
+      } catch (error) {
+        console.error("Error fetching IP statuses:", error);
+      }
+    }
 
-            ipStatus.forEach((entry) => {
-                const resultBox = document.createElement("div");
-                resultBox.className = `box ${entry.alive ? "success" : "failure"}`;
-                resultBox.innerHTML = `
-                    <div class="ip-details">
-                        <span>${entry.name} (${entry.ip})</span>
-                        <span class="status">${entry.alive ? "Connected" : "Disconnected"}</span>
-                    </div>
-                `;
-                resultsDiv.appendChild(resultBox);
-            });
-        }
+    function showHome() {
+      document.getElementById("home").classList.remove("hidden");
+      document.getElementById("ip-management").classList.add("hidden");
+      fetchAndUpdateIPStatus();
+    }
 
-        async function addIPAddress() {
-            const name = document.getElementById("ipName").value.trim();
-            const ip = document.getElementById("ipAddress").value.trim();
+    function showIpManagement() {
+      document.getElementById("ip-management").classList.remove("hidden");
+      document.getElementById("home").classList.add("hidden");
+      fetchIpList();
+      fetchDeletedIps();
+    }
 
-            if (name && ip) {
-                await fetch(`${API_BASE_URL}/add-ip`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, ip }),
-                });
-                fetchIPs();
-                displayIPList();
-                document.getElementById("ipName").value = "";
-                document.getElementById("ipAddress").value = "";
-            } else {
-                alert("Please provide both Name and IP Address.");
-            }
-        }
+    async function fetchIpList() {
+      const response = await fetch(`${API_BASE_URL}/ping`);
+      const data = await response.json();
 
-        async function deleteIPAddress(ip) {
-            await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
-            fetchIPs();
-            displayIPList();
-        }
+      const ipListDiv = document.getElementById("ip-list");
+      ipListDiv.innerHTML = '';
+      data.forEach((entry) => {
+        ipListDiv.innerHTML += `
+          <div>
+            ${entry.name} (${entry.ip})
+            <button onclick="deleteIPAddress('${entry.ip}')">Delete</button>
+          </div>`;
+      });
+    }
 
-        async function displayIPList() {
-            const ipList = await fetch(`${API_BASE_URL}/ping`).then((res) => res.json());
-            const ipListDiv = document.getElementById("ip-list");
-            ipListDiv.innerHTML = "";
+    async function fetchDeletedIps() {
+      const response = await fetch(`${API_BASE_URL}/deleted-ips`);
+      const data = await response.json();
 
-            ipList.forEach((entry) => {
-                const ipItem = document.createElement("div");
-                ipItem.className = "ip-item";
+      const deletedIpListDiv = document.getElementById("deleted-ip-list");
+      deletedIpListDiv.innerHTML = '';
+      data.forEach((entry) => {
+        deletedIpListDiv.innerHTML += `
+          <div>
+            ${entry.name} (${entry.ip})
+            <button onclick="restoreIPAddress('${entry.ip}')">Restore</button>
+          </div>`;
+      });
+    }
 
-                ipItem.innerHTML = `
-                    <span>${entry.name} (${entry.ip})</span>
-                    <button class="delete" onclick="deleteIPAddress('${entry.ip}')">Delete</button>
-                `;
-                ipListDiv.appendChild(ipItem);
-            });
-        }
+    async function addIPAddress() {
+      const name = document.getElementById("ipName").value;
+      const ip = document.getElementById("ipAddress").value;
 
-        document.addEventListener("DOMContentLoaded", () => {
-            fetchIPs();
-            displayIPList();
-            setInterval(fetchIPs, 5000); // Ping every 5 seconds
+      if (name && ip) {
+        await fetch(`${API_BASE_URL}/add-ip`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, ip }),
         });
-    </script>
+        fetchIpList();
+        document.getElementById("ipName").value = '';
+        document.getElementById("ipAddress").value = '';
+      }
+    }
+
+    async function deleteIPAddress(ip) {
+      await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
+      fetchIpList();
+      fetchDeletedIps();
+    }
+
+    async function restoreIPAddress(ip) {
+      await fetch(`${API_BASE_URL}/restore-ip/${ip}`, { method: "POST" });
+      fetchIpList();
+      fetchDeletedIps();
+    }
+
+    setInterval(fetchAndUpdateIPStatus, 5000);
+
+    document.addEventListener("DOMContentLoaded", showHome);
+  </script>
 </body>
 </html>
