@@ -6,13 +6,18 @@
       "status": "Disconnected"
     },
     {
-      "name": "GBR-117",
+      "name": "GBR-117_G97",
       "ip": "192.168.16.2",
       "status": "Disconnected"
     },
     {
       "name": "GAL-27_G58",
       "ip": "192.168.10.106",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL-26",
+      "ip": "192.168.10.107\t",
       "status": "Disconnected"
     },
     {
@@ -104,136 +109,6 @@
       "name": "MANJU-23_G58",
       "ip": "192.168.12.1",
       "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-24_G58\t",
-      "ip": "192.168.12.2",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-25_G58",
-      "ip": "192.168.12.3",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-19_G58",
-      "ip": "192.168.12.4\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GSN-25_G58",
-      "ip": "192.168.12.66\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GSN-26_G58",
-      "ip": "192.168.12.68",
-      "status": "Disconnected"
-    },
-    {
-      "name": "VNH_G58",
-      "ip": "192.168.11.218\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ST01_2K",
-      "ip": "192.168.11.202",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ST02_2K",
-      "ip": "192.168.11.210\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND-01_G58",
-      "ip": "192.168.13.83",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND-02_G58",
-      "ip": "192.168.13.84",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND-03_G58",
-      "ip": "192.168.13.85\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND-04_G58",
-      "ip": "192.168.13.86",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND-05_G58",
-      "ip": "192.168.13.87\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND-06_G58",
-      "ip": "192.168.13.88",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-01_G58",
-      "ip": "192.168.13.71",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-02_G58",
-      "ip": "192.168.13.72\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-03_G58",
-      "ip": "192.168.13.73\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-04_G58",
-      "ip": "192.168.13.74\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-05_G58",
-      "ip": "192.168.13.75\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-06_G58",
-      "ip": "192.168.13.76\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-07_G58",
-      "ip": "192.168.13.77\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-08",
-      "ip": "192.168.13.78\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-09_G58",
-      "ip": "192.168.13.79\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-10_G58",
-      "ip": "192.168.13.80\t",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD-11_G58\t",
-      "ip": "192.168.13.81",
-      "status": "Disconnected"
-    },
-    {
-      "name": "IP",
-      "ip": "45.34.34.54",
-      "status": "Disconnected"
     }
   ],
   "deletedIps": [
@@ -253,8 +128,53 @@
       "status": "Disconnected"
     },
     {
-      "name": "PD-11",
-      "ip": "192.168.13.81",
+      "name": "IP",
+      "ip": "192.168.14.200",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GBR-117",
+      "ip": "192.168.16.2",
+      "status": "Disconnected"
+    },
+    {
+      "name": "modem",
+      "ip": "127.0.0.1",
+      "status": "Connected"
+    },
+    {
+      "name": "MANJU-23_G58",
+      "ip": "192.168.12.1",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MANJU-23_G58",
+      "ip": "192.168.12.1",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL-04_G58",
+      "ip": "192.168.10.9",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL-04_G58",
+      "ip": "192.168.10.9",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MANJU-23_G58",
+      "ip": "192.168.12.1",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL-04_G58",
+      "ip": "192.168.10.9",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MANJU-23_G58",
+      "ip": "192.168.12.1",
       "status": "Disconnected"
     }
   ]
