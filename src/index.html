@@ -13,20 +13,27 @@
   </nav>
 
   <main id="main-content">
+    <!-- Home Section -->
     <section id="home">
       <h1>SCADA Connectivity</h1>
       <div id="ip-status-container"></div>
     </section>
 
+    <!-- IP Management Section -->
     <section id="ip-management" class="hidden">
-      
       <h2>Add New IP</h2>
-      <input type="text" id="ipName" placeholder="Enter Name">
-      <input type="text" id="ipAddress" placeholder="Enter IP Address">
+      <input type="text" id="ipName" placeholder="Enter Name" required>
+      <input type="text" id="ipAddress" placeholder="Enter IP Address" required>
+      <select id="ipSite" required>
+        <option value="" disabled selected>Select Site</option>
+        <option value="GE58">GE58</option>
+        <option value="GE97">GE97</option>
+      </select>
       <button onclick="addIPAddress()">Add IP</button>
+
       <h1>IP Management</h1>
       <div id="ip-list"></div>
-      
+
       <h2>Deleted IPs</h2>
       <div id="deleted-ip-list"></div>
     </section>
@@ -46,6 +53,7 @@
           <span class="ip-name">${entry.name}</span>
           <span class="ip-address">(${entry.ip})</span>
           <span class="ip-status">${entry.status}</span>
+          <span class="ip-site">[${entry.site}]</span>
         `;
         container.appendChild(ipBox);
       });
@@ -84,10 +92,70 @@
       data.forEach((entry) => {
         ipListDiv.innerHTML += `
           <div>
-            ${entry.name} (${entry.ip})
+            ${entry.name} (${entry.ip}) [${entry.site}]
             <button onclick="deleteIPAddress('${entry.ip}')">Delete</button>
+            <button onclick="showEditForm('${entry.ip}', '${entry.name}', '${entry.site}')">Edit</button>
+          </div>
+          <div id="edit-form-${entry.ip}" class="hidden">
+            <input type="text" id="edit-name-${entry.ip}" value="${entry.name}" placeholder="Enter new name">
+            <select id="edit-site-${entry.ip}">
+              <option value="GE58" ${entry.site === 'GE58' ? 'selected' : ''}>GE58</option>
+              <option value="GE97" ${entry.site === 'GE97' ? 'selected' : ''}>GE97</option>
+            </select>
+            <button onclick="updateIPAddress('${entry.ip}')">Save</button>
+            <button onclick="hideEditForm('${entry.ip}')">Cancel</button>
           </div>`;
       });
+    }
+
+    function showEditForm(ip) {
+      document.getElementById(`edit-form-${ip}`).classList.remove("hidden");
+    }
+
+    function hideEditForm(ip) {
+      document.getElementById(`edit-form-${ip}`).classList.add("hidden");
+    }
+
+    async function addIPAddress() {
+      const name = document.getElementById("ipName").value;
+      const ip = document.getElementById("ipAddress").value;
+      const site = document.getElementById("ipSite").value;
+
+      if (name && ip && site) {
+        await fetch(`${API_BASE_URL}/add-ip`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, ip, site }),
+        });
+        fetchIpList();
+        document.getElementById("ipName").value = '';
+        document.getElementById("ipAddress").value = '';
+        document.getElementById("ipSite").value = '';
+      } else {
+        alert("All fields are mandatory!");
+      }
+    }
+
+    async function updateIPAddress(ip) {
+      const newName = document.getElementById(`edit-name-${ip}`).value;
+      const newSite = document.getElementById(`edit-site-${ip}`).value;
+
+      if (newName && newSite) {
+        await fetch(`${API_BASE_URL}/edit-ip`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ip, name: newName, site: newSite }),
+        });
+        fetchIpList(); // Refresh the list after the update
+      } else {
+        alert("All fields are mandatory!");
+      }
+    }
+
+    async function deleteIPAddress(ip) {
+      await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
+      fetchIpList();
+      fetchDeletedIps();
     }
 
     async function fetchDeletedIps() {
@@ -99,32 +167,10 @@
       data.forEach((entry) => {
         deletedIpListDiv.innerHTML += `
           <div>
-            ${entry.name} (${entry.ip})
+            ${entry.name} (${entry.ip}) [${entry.site}]
             <button onclick="restoreIPAddress('${entry.ip}')">Restore</button>
           </div>`;
       });
-    }
-
-    async function addIPAddress() {
-      const name = document.getElementById("ipName").value;
-      const ip = document.getElementById("ipAddress").value;
-
-      if (name && ip) {
-        await fetch(`${API_BASE_URL}/add-ip`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, ip }),
-        });
-        fetchIpList();
-        document.getElementById("ipName").value = '';
-        document.getElementById("ipAddress").value = '';
-      }
-    }
-
-    async function deleteIPAddress(ip) {
-      await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
-      fetchIpList();
-      fetchDeletedIps();
     }
 
     async function restoreIPAddress(ip) {
@@ -132,8 +178,6 @@
       fetchIpList();
       fetchDeletedIps();
     }
-
-    setInterval(fetchAndUpdateIPStatus, 5000);
 
     document.addEventListener("DOMContentLoaded", showHome);
   </script>

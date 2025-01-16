@@ -92,3 +92,14 @@ main {
 .ip-status {
   margin-top: 10px;
 }
+.hidden {
+  display: none;
+}
+
+#ip-list div {
+  margin: 10px 0;
+}
+
+#ip-list input {
+  margin: 5px 0;
+}

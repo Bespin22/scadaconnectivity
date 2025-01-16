@@ -15,14 +15,17 @@ app.use(cors());
 let ipList = [];
 let deletedIps = [];
 
+// Load IP list from the file
 function loadIPList() {
   if (fs.existsSync(DATA_FILE)) {
     const data = fs.readFileSync(DATA_FILE, "utf-8");
-    ipList = JSON.parse(data).ipList || [];
-    deletedIps = JSON.parse(data).deletedIps || [];
+    const parsedData = JSON.parse(data);
+    ipList = parsedData.ipList || [];
+    deletedIps = parsedData.deletedIps || [];
   }
 }
 
+// Save IP list to the file
 function saveIPList() {
   fs.writeFileSync(DATA_FILE, JSON.stringify({ ipList, deletedIps }, null, 2));
 }
@@ -37,32 +40,46 @@ app.get("/ping", async (req, res) => {
       ping.promise.probe(entry.ip).then((result) => ({
         name: entry.name,
         ip: entry.ip,
-        statusCode: result.alive ? 200 : 500,
+        site: entry.site,
+        status: result.alive ? "Connected" : "Disconnected",
       }))
     )
   );
 
-  ipList = ipList.map((entry, index) => ({
-    ...entry,
-    status:
-      pingResults[index] && pingResults[index].statusCode === 200
-        ? "Connected"
-        : "Disconnected",
-  }));
-
+  ipList = pingResults;
   saveIPList();
   res.json(ipList);
 });
 
 // Add a new IP to the list
 app.post("/add-ip", (req, res) => {
-  const { name, ip } = req.body;
-  if (name && ip) {
-    ipList.push({ name, ip, status: "Pending" });
+  const { name, ip, site } = req.body;
+
+  if (name && ip && site) {
+    ipList.push({ name, ip, site, status: "Pending" });
     saveIPList();
     res.status(201).json({ message: "IP added successfully." });
   } else {
-    res.status(400).json({ message: "Name and IP are required." });
+    res.status(400).json({ message: "Name, IP, and Site are required." });
+  }
+});
+
+// Edit an IP entry
+app.put("/edit-ip", (req, res) => {
+  const { ip, name, site } = req.body;
+
+  if (!ip || !name || !site) {
+    return res.status(400).json({ message: "IP, name, and site are required." });
+  }
+
+  const index = ipList.findIndex((entry) => entry.ip === ip);
+  if (index !== -1) {
+    ipList[index].name = name;
+    ipList[index].site = site;
+    saveIPList();
+    res.json({ message: "IP entry updated successfully." });
+  } else {
+    res.status(404).json({ message: "IP not found." });
   }
 });
 
@@ -70,6 +87,7 @@ app.post("/add-ip", (req, res) => {
 app.delete("/delete-ip/:ip", (req, res) => {
   const { ip } = req.params;
   const index = ipList.findIndex((entry) => entry.ip === ip);
+
   if (index !== -1) {
     deletedIps.push(ipList[index]);
     ipList.splice(index, 1);
@@ -84,6 +102,7 @@ app.delete("/delete-ip/:ip", (req, res) => {
 app.post("/restore-ip/:ip", (req, res) => {
   const { ip } = req.params;
   const index = deletedIps.findIndex((entry) => entry.ip === ip);
+
   if (index !== -1) {
     ipList.push(deletedIps[index]);
     deletedIps.splice(index, 1);
@@ -105,21 +124,13 @@ function updatePingStatus() {
     const pingResults = await Promise.all(
       ipList.map((entry) =>
         ping.promise.probe(entry.ip).then((result) => ({
-          name: entry.name,
-          ip: entry.ip,
-          statusCode: result.alive ? 200 : 500,
+          ...entry,
+          status: result.alive ? "Connected" : "Disconnected",
         }))
       )
     );
 
-    ipList = ipList.map((entry, index) => ({
-      ...entry,
-      status:
-        pingResults[index] && pingResults[index].statusCode === 200
-          ? "Connected"
-          : "Disconnected",
-    }));
-
+    ipList = pingResults;
     saveIPList();
     console.log("Updated ping status:", ipList);
   }, 5000);
@@ -128,6 +139,7 @@ function updatePingStatus() {
 // Start the periodic ping status update
 updatePingStatus();
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
