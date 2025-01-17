@@ -1,9 +1,10 @@
 {
   "ipList": [
     {
-      "name": "GAL-05_G58",
+      "name": "GAL-05",
       "ip": "192.168.10.10",
-      "status": "Disconnected"
+      "status": "Disconnected",
+      "site": "G58"
     },
     {
       "name": "GBR-117_G97",
@@ -11,9 +12,10 @@
       "status": "Disconnected"
     },
     {
-      "name": "GAL-27_G58",
+      "name": "GAL-27",
       "ip": "192.168.10.106",
-      "status": "Disconnected"
+      "status": "Disconnected",
+      "site": "GE58"
     },
     {
       "name": "GAL-26",
@@ -113,68 +115,13 @@
   ],
   "deletedIps": [
     {
-      "name": "modem",
-      "ip": "192.168.14.24:90",
-      "status": "Disconnected"
-    },
-    {
-      "name": "pnt",
-      "ip": "192.168.6.146",
-      "status": "Disconnected"
-    },
-    {
-      "name": "modem",
-      "ip": "152.52.161.22",
-      "status": "Disconnected"
-    },
-    {
-      "name": "IP",
-      "ip": "192.168.14.200",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GBR-117",
-      "ip": "192.168.16.2",
-      "status": "Disconnected"
-    },
-    {
-      "name": "modem",
-      "ip": "127.0.0.1",
-      "status": "Connected"
-    },
-    {
-      "name": "MANJU-23_G58",
-      "ip": "192.168.12.1",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-23_G58",
-      "ip": "192.168.12.1",
+      "name": "GAL-10_G58",
+      "ip": "192.168.10.86",
       "status": "Disconnected"
     },
     {
       "name": "GAL-04_G58",
       "ip": "192.168.10.9",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL-04_G58",
-      "ip": "192.168.10.9",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-23_G58",
-      "ip": "192.168.12.1",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL-04_G58",
-      "ip": "192.168.10.9",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-23_G58",
-      "ip": "192.168.12.1",
       "status": "Disconnected"
     }
   ]

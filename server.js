@@ -15,7 +15,6 @@ app.use(cors());
 let ipList = [];
 let deletedIps = [];
 
-// Load IP list from the file
 function loadIPList() {
   if (fs.existsSync(DATA_FILE)) {
     const data = fs.readFileSync(DATA_FILE, "utf-8");
@@ -25,7 +24,6 @@ function loadIPList() {
   }
 }
 
-// Save IP list to the file
 function saveIPList() {
   fs.writeFileSync(DATA_FILE, JSON.stringify({ ipList, deletedIps }, null, 2));
 }
@@ -38,9 +36,7 @@ app.get("/ping", async (req, res) => {
   const pingResults = await Promise.all(
     ipList.map((entry) =>
       ping.promise.probe(entry.ip).then((result) => ({
-        name: entry.name,
-        ip: entry.ip,
-        site: entry.site,
+        ...entry,
         status: result.alive ? "Connected" : "Disconnected",
       }))
     )
@@ -69,7 +65,9 @@ app.put("/edit-ip", (req, res) => {
   const { ip, name, site } = req.body;
 
   if (!ip || !name || !site) {
-    return res.status(400).json({ message: "IP, name, and site are required." });
+    return res
+      .status(400)
+      .json({ message: "IP, name, and site are required." });
   }
 
   const index = ipList.findIndex((entry) => entry.ip === ip);
@@ -95,6 +93,20 @@ app.delete("/delete-ip/:ip", (req, res) => {
     res.json({ message: "IP deleted successfully." });
   } else {
     res.status(404).json({ message: "IP not found." });
+  }
+});
+
+// Permanently delete an IP from the deleted list
+app.delete("/permanent-delete-ip/:ip", (req, res) => {
+  const { ip } = req.params;
+  const index = deletedIps.findIndex((entry) => entry.ip === ip);
+
+  if (index !== -1) {
+    deletedIps.splice(index, 1);
+    saveIPList();
+    res.json({ message: "IP permanently deleted." });
+  } else {
+    res.status(404).json({ message: "IP not found in deleted list." });
   }
 });
 
