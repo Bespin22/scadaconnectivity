@@ -31,14 +31,22 @@
       <form id="add-ip-form" class="form-container">
         <input type="text" id="ipName" placeholder="Name" required />
         <input type="text" id="ipAddress" placeholder="IP Address" required />
-        <select id="ipSite" required>
-          <option value="" disabled selected>Select Site</option>
-          <option value="GE58">GE58</option>
-          <option value="GE97">GE97</option>
-        </select>
+        <input type="text" id="ipTurbineType" placeholder="Turbine Type" required />
+        <input type="text" id="ipTurbineLocation" placeholder="Turbine Location" required />
         <button type="submit">Add IP</button>
       </form>
     </div>
+
+    <!-- Bulk Upload IPs -->
+    <h3>Bulk Upload IPs</h3>
+    <form id="bulk-upload-form" enctype="multipart/form-data">
+      <input type="file" id="bulkFile" accept=".xlsx" required />
+      <button type="submit">Upload</button>
+    </form>
+
+    <!-- Download All IPs -->
+    <h3>Download IP List</h3>
+    <button id="download-ip-list">Download IPs as XLSX</button>
 
     <!-- IP List -->
     <h3>IP List</h3>
@@ -68,19 +76,18 @@
       homeStatusDiv.innerHTML = data
         .map(
           (ip) => `
-          <div class="box ${
-            ip.status === "Connected" ? "connected" : "disconnected"
-          }">
-            <p><strong>Name:</strong> ${ip.name}</p>
-            <p><strong>IP:</strong> ${ip.ip}</p>
-            <p><strong>Site:</strong> ${ip.site}</p>
-            <p><strong>Status:</strong> ${ip.status}</p>
+          <div class="box ${ip.status === "Connected" ? "connected" : "disconnected"}">
+            <p><strong>${ip.name}</strong></p>
+            <p>${ip.ip}</p>
+            <p>${ip.turbineType}</p>
+            <p>${ip.turbineLocation}</p>
+            <p>Status: ${ip.status}</p>
           </div>`
         )
         .join("");
     }
 
-    // Fetch and display IP list in IP Management
+    // Fetch and display IP list
     async function fetchIPList() {
       const response = await fetch(`${API_BASE_URL}/ping`);
       const data = await response.json();
@@ -91,8 +98,9 @@
           <div class="box">
             <p><strong>Name:</strong> ${ip.name}</p>
             <p><strong>IP:</strong> ${ip.ip}</p>
-            <p><strong>Site:</strong> ${ip.site}</p>
-            <button onclick="editIP('${ip.name}', '${ip.ip}', '${ip.site}')">✏️ Edit</button>
+            <p><strong>Turbine Type:</strong> ${ip.turbineType}</p>
+            <p><strong>Turbine Location:</strong> ${ip.turbineLocation}</p>
+            <button onclick="editIP('${ip.name}', '${ip.ip}', '${ip.turbineType}', '${ip.turbineLocation}')">✏️ Edit</button>
             <button onclick="deleteIP('${ip.ip}')">🗑️ Delete</button>
           </div>`
         )
@@ -110,7 +118,8 @@
           <div class="box">
             <p><strong>Name:</strong> ${ip.name}</p>
             <p><strong>IP:</strong> ${ip.ip}</p>
-            <p><strong>Site:</strong> ${ip.site}</p>
+            <p><strong>Turbine Type:</strong> ${ip.turbineType}</p>
+            <p><strong>Turbine Location:</strong> ${ip.turbineLocation}</p>
             <button onclick="restoreIP('${ip.ip}')">♻️ Restore</button>
             <button onclick="permanentlyDeleteIP('${ip.ip}')">❌ Permanently Delete</button>
           </div>`
@@ -123,12 +132,13 @@
       e.preventDefault();
       const name = document.getElementById("ipName").value;
       const ip = document.getElementById("ipAddress").value;
-      const site = document.getElementById("ipSite").value;
+      const turbineType = document.getElementById("ipTurbineType").value;
+      const turbineLocation = document.getElementById("ipTurbineLocation").value;
 
       const response = await fetch(`${API_BASE_URL}/add-ip`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, ip, site }),
+        body: JSON.stringify({ name, ip, turbineType, turbineLocation }),
       });
 
       if (response.ok) {
@@ -138,21 +148,52 @@
       }
     });
 
-    // Edit an IP
-    async function editIP(currentName, currentIp, currentSite) {
-      const newName = prompt("Enter new name:", currentName);
-      const newIp = prompt("Enter new IP address:", currentIp);
-      const newSite = prompt("Enter new site (GE58 or GE97):", currentSite);
+    // Bulk upload IPs
+    document.getElementById("bulk-upload-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fileInput = document.getElementById("bulkFile");
+      const file = fileInput.files[0];
 
-      if (newName && newIp && newSite) {
+      if (!file) {
+        alert("Please select a file.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch(`${API_BASE_URL}/bulk-add`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert(`Upload complete. Added: ${result.added}, Duplicates: ${result.duplicates}`);
+        fetchIPList();
+      }
+    });
+
+    // Export IP list as XLSX
+    document.getElementById("download-ip-list").addEventListener("click", () => {
+      window.location.href = `${API_BASE_URL}/export-ip-list`;
+    });
+
+    // Edit an IP
+    async function editIP(name, ip, turbineType, turbineLocation) {
+      const newName = prompt("Enter new name:", name);
+      const newIp = prompt("Enter new IP address:", ip);
+      const newTurbineType = prompt("Enter new turbine type:", turbineType);
+      const newTurbineLocation = prompt("Enter new turbine location:", turbineLocation);
+
+      if (newName && newIp && newTurbineType && newTurbineLocation) {
         const response = await fetch(`${API_BASE_URL}/edit-ip`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ oldIp: currentIp, name: newName, ip: newIp, site: newSite }),
+          body: JSON.stringify({ oldIp: ip, name: newName, ip: newIp, turbineType: newTurbineType, turbineLocation: newTurbineLocation }),
         });
-        if (response.ok) {
-          fetchIPList();
-        }
+
+        if (response.ok) fetchIPList();
       }
     }
 
@@ -170,13 +211,13 @@
       fetchDeletedIPs();
     }
 
-    // Permanently delete an IP from the deleted list
+    // Permanently delete an IP
     async function permanentlyDeleteIP(ip) {
       await fetch(`${API_BASE_URL}/permanently-delete-ip/${ip}`, { method: "DELETE" });
       fetchDeletedIPs();
     }
 
-    // Initialize data
+    // Initialize
     fetchIPStatus();
     fetchIPList();
     fetchDeletedIPs();
