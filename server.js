@@ -5,11 +5,12 @@ const ping = require("ping");
 const multer = require("multer");
 const xlsx = require("xlsx");
 const path = require("path");
-const fs = require("fs");
 
+const fs = require("fs");
 const app = express();
 const PORT = 3000;
 const DATA_FILE = "ipList.json";
+
 
 // Middleware
 app.use(cors());
@@ -27,11 +28,13 @@ function loadIPData() {
     const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
     ipData = data.ipList || [];
     deletedIPs = data.deletedIPs || [];
+
   }
 }
 
 function saveIPData() {
   fs.writeFileSync(DATA_FILE, JSON.stringify({ ipList: ipData, deletedIPs }, null, 2));
+
 }
 
 // Load data on server startup
@@ -50,27 +53,63 @@ app.get("/ping", async (req, res) => {
   res.json(results);
 });
 
+
 // Export all turbine data to XLSX and download
 app.get("/export-turbines", (req, res) => {
   try {
-    const workbook = xlsx.utils.book_new();
-    const worksheet = xlsx.utils.json_to_sheet(ipData);
+    const includeDeleted = req.query.includeDeleted === "true"; // Check if deleted IPs should be included
+    const filter = req.query.filter || null; // Optional filter parameter
 
-    xlsx.utils.book_append_sheet(workbook, worksheet, "Turbines");
-    const filePath = path.join(__dirname, "turbines.xlsx");
+     // Prepare data for export
+     let exportData = [...ipData];
+     if (includeDeleted) {
+       exportData = [...exportData, ...deletedIPs];
+     }
+ 
+     if (filter) {
+       exportData = exportData.filter((entry) =>
+         entry.name.toLowerCase().includes(filter.toLowerCase())
+       );
+     }
+
+
+
+
+ // Ensure there's data to export
+ if (exportData.length === 0) {
+  return res.status(404).json({ message: "No data available for export." });
+}
+
+
+ // Create a new Excel workbook and worksheet
+ const workbook = xlsx.utils.book_new();
+ const worksheet = xlsx.utils.json_to_sheet(exportData);
+ xlsx.utils.book_append_sheet(workbook, worksheet, "IP List");
+
+   // Generate file name
+   const timestamp = new Date().toISOString().replace(/[:.-]/g, "_");
+   const fileName = `IP_List_${timestamp}.xlsx`;
+   const filePath = path.join(__dirname, fileName);
+
+
+    // Write the workbook to the server and send it for download
     xlsx.writeFile(workbook, filePath);
-
-    res.download(filePath, "turbines.xlsx", (err) => {
+    res.download(filePath, fileName, (err) => {
       if (err) {
-        console.error("Error sending the file:", err);
+        console.error("Error downloading file:", err);
+        res.status(500).send("Failed to download the file.");
       }
-      fs.unlinkSync(filePath); // Delete the file after sending
+
+      // Clean up: delete the file after sending it
+      fs.unlinkSync(filePath);
     });
   } catch (error) {
-    console.error("Error exporting turbines:", error);
-    res.status(500).json({ error: "Failed to export turbines." });
+    console.error("Error exporting IPs:", error);
+    res.status(500).send("Failed to export IPs.");
   }
 });
+
+
 
 // Add a new IP entry
 app.post("/add-ip", (req, res) => {
@@ -80,7 +119,7 @@ app.post("/add-ip", (req, res) => {
     return res.status(400).json({ message: "All fields are required." });
   }
 
-  if (ipData.find((entry) => entry.ip === ip)) {
+  if (ipData.some((entry) => entry.ip === ip)) {
     return res.status(400).json({ message: "IP address already exists." });
   }
 
@@ -106,6 +145,7 @@ app.put("/edit-ip", (req, res) => {
   saveIPData();
   res.json({ message: "IP updated successfully." });
 });
+
 
 // Delete an IP entry
 app.delete("/delete-ip/:ip", (req, res) => {
@@ -136,16 +176,17 @@ app.post("/restore-ip/:ip", (req, res) => {
     return res.status(404).json({ message: "Deleted IP not found." });
   }
 
+
   const [restoredIP] = deletedIPs.splice(ipIndex, 1);
   ipData.push(restoredIP);
   saveIPData();
   res.json({ message: "IP restored successfully." });
+
 });
 
 // Permanently delete an IP from the deleted list
 app.delete("/permanently-delete-ip/:ip", (req, res) => {
   const { ip } = req.params;
-
   const ipIndex = deletedIPs.findIndex((entry) => entry.ip === ip);
   if (ipIndex === -1) {
     return res.status(404).json({ message: "Deleted IP not found." });
@@ -210,6 +251,8 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
     res.status(500).json({ error: "Failed to process bulk upload." });
   }
 });
+
+
 
 // Start the server
 app.listen(PORT, () => {
