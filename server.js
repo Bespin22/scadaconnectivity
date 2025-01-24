@@ -53,6 +53,38 @@ app.get("/ping", async (req, res) => {
   res.json(results);
 });
 
+//filter starts 
+
+// Fetch data from iplist.json and populate the dropdown with turbine locations
+async function fetchDataAndInitialize() {
+  try {
+    // Fetch the JSON file
+    const response = await fetch("iplist.json");
+    const data = await response.json();
+
+    // Extract unique turbine locations
+    const locations = [...new Set(data.map((item) => item.turbineLocation))];
+    const dropdown = document.getElementById("location-filter");
+
+    // Clear existing options in the dropdown
+    dropdown.innerHTML = '<option value="all">All Turbine Locations</option>';
+
+    // Populate the dropdown with unique locations
+    locations.forEach((location) => {
+      const option = document.createElement("option");
+      option.value = location;
+      option.textContent = location;
+      dropdown.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Error fetching or processing JSON:", error);
+  }
+}
+
+
+//filter ends
+
+
 
 // Export all turbine data to XLSX and download
 app.get("/export-turbines", (req, res) => {
