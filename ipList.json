@@ -209,6 +209,279 @@
       "turbineType": "padashbxvb",
       "turbineLocation": "KA-BABALISHWAR",
       "status": "Disconnected"
+    },
+    {
+      "name": "GAL03",
+      "ip": "192.168.10.8",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL04",
+      "ip": "192.168.10.9",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL05",
+      "ip": "192.168.10.10",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL06",
+      "ip": "192.168.10.11",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL07",
+      "ip": "192.168.10.12",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL08",
+      "ip": "192.168.10.13",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL12",
+      "ip": "192.168.10.5",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL10",
+      "ip": "192.168.10.86",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL18",
+      "ip": "192.168.10.18",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL22",
+      "ip": "192.168.10.20",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL13",
+      "ip": "192.168.10.17",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL24",
+      "ip": "192.168.10.22",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL27",
+      "ip": "192.168.10.106",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL14",
+      "ip": "192.168.10.4",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GAL26",
+      "ip": "192.168.10.107",
+      "turbineType": "G58",
+      "turbineLocation": "MH-BENDAVADI",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MANJU-25",
+      "ip": "192.168.12.3",
+      "turbineType": "G58",
+      "turbineLocation": "KA-Chikkodi",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MANJU-19",
+      "ip": "192.168.12.4",
+      "turbineType": "G58",
+      "turbineLocation": "KA-Chikkodi",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GSN-25",
+      "ip": "192.168.12.66",
+      "turbineType": "G58",
+      "turbineLocation": "KA-Chikkodi",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GSN-26",
+      "ip": "192.168.12.68",
+      "turbineType": "G58",
+      "turbineLocation": "KA-Chikkodi",
+      "status": "Disconnected"
+    },
+    {
+      "name": "ND01",
+      "ip": "192.168.13.83",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "ND04",
+      "ip": "192.168.13.86",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "ND05",
+      "ip": "192.168.13.87",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "ND06",
+      "ip": "192.168.13.88",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD01",
+      "ip": "192.168.13.71",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD02",
+      "ip": "192.168.13.72",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD03",
+      "ip": "192.168.13.73",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD04",
+      "ip": "192.168.13.74",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD05",
+      "ip": "192.168.13.75",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD06",
+      "ip": "192.168.13.76",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "PD07",
+      "ip": "192.168.13.77",
+      "turbineType": "G58",
+      "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL17",
+      "ip": "192.168.13.1",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 10",
+      "ip": "192.168.13.2",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 41",
+      "ip": "192.168.13.162",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 26",
+      "ip": "192.168.13.154",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 05",
+      "ip": "192.168.13.6",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 09",
+      "ip": "192.168.13.7",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 02",
+      "ip": "192.168.13.146",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "MGL 51",
+      "ip": "192.168.13.130",
+      "turbineType": "G58",
+      "turbineLocation": "RJ-LUDRWA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "fvdh",
+      "ip": "192.68.1.1",
+      "turbineType": "agadzh",
+      "turbineLocation": "ASGRFDA",
+      "status": "Disconnected"
     }
   ],
   "deletedIPs": [

@@ -1,0 +1,28 @@
+[debug] [2025-01-27T10:10:43.839Z] ----------------------------------------------------------------------
+[debug] [2025-01-27T10:10:43.842Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\everr\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-01-27T10:10:43.842Z] CLI Version:   13.29.2
+[debug] [2025-01-27T10:10:43.842Z] Platform:      win32
+[debug] [2025-01-27T10:10:43.842Z] Node Version:  v21.6.1
+[debug] [2025-01-27T10:10:43.842Z] Time:          Mon Jan 27 2025 15:40:43 GMT+0530 (India Standard Time)
+[debug] [2025-01-27T10:10:43.843Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-27T10:10:43.848Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-27T10:10:43.848Z] > authorizing via signed-in user (bespin2222@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\everr\OneDrive\Documents\GitHub\scadaconnectivity
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
