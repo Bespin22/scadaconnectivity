@@ -86,9 +86,7 @@
           (ip) => `
           <div class="box ${ip.status === "Connected" ? "connected" : "disconnected"}">
             <p><strong>${ip.name}_${ip.turbineType}</strong></p>
-            <p>${ip.ip}</p>
             <p>${ip.turbineLocation}</p>
-            <p>Status: ${ip.status}</p>
           </div>`
         )
         .join("");
@@ -260,6 +258,7 @@ document.getElementById("download-ip-list").addEventListener("click", () => {
       const newIp = prompt("Enter new IP address:", ip);
       const newTurbineType = prompt("Enter new turbine type:", turbineType);
       const newTurbineLocation = prompt("Enter new turbine location:", turbineLocation);
+      
 
       if (newName && newIp && newTurbineType && newTurbineLocation) {
         const response = await fetch(`${API_BASE_URL}/edit-ip`, {
