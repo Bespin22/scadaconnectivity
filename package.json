@@ -2,12 +2,11 @@
   "name": "scadaconnectivity",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+  "ng": "ng",
+  "build": "ng build --configuration production",
+  "start": "node server.js"
+},
+
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",

@@ -290,3 +290,12 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+const path = require("path");
+
+// Serve Angular frontend
+app.use(express.static(path.join(__dirname, "dist/scadaconnectivity"))); // change name to your Angular project folder
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/scadaconnectivity/index.html"));
+});
