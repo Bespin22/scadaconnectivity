@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "ng build --configuration production",
-    "start": "node server.js"
+    "start":  "ng build && node server.js"
   },
   "private": true,
   "dependencies": {

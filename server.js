@@ -292,7 +292,7 @@ app.listen(PORT, () => {
 });
 
 
-// Serve Angular build files
+
 app.use(express.static(path.join(__dirname, 'dist/scadaconnectivity')));
 
 app.get('*', (req, res) => {
