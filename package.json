@@ -2,11 +2,9 @@
   "name": "scadaconnectivity",
   "version": "0.0.0",
   "scripts": {
-  "ng": "ng",
-  "build": "ng build --configuration production",
-  "start": "node server.js"
-},
-
+    "build": "ng build --configuration production",
+    "start": "node server.js"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
@@ -18,6 +16,7 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "body-parser": "^1.20.3",
+    "build": "^0.1.4",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "firebase": "^11.4.0",
@@ -25,7 +24,9 @@
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.1",
     "multer": "^1.4.5-lts.1",
+    "npm": "^11.2.0",
     "ping": "^0.4.4",
+    "run": "^1.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
