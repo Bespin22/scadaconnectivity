@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "ng build --configuration production",
-    "start":  "ng build && node server.js"
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -53,7 +53,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "ISC",    
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Bespin22/scadaconnectivity/issues"

@@ -293,8 +293,11 @@ app.listen(PORT, () => {
 
 
 
-app.use(express.static(path.join(__dirname, 'dist/scadaconnectivity')));
+// Serve Angular frontend
+const frontendPath = path.join(__dirname, 'dist', 'scadaconnectivity');
+app.use(express.static(frontendPath));
 
+// For SPA: redirect all unknown routes to index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/scadaconnectivity/index.html'));
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
