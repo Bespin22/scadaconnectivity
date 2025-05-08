@@ -4,17 +4,22 @@ const cors = require("cors");
 const ping = require("ping");
 const multer = require("multer");
 const xlsx = require("xlsx");
-const path = require("path");
 
 const fs = require("fs");
+const express = require('express');
+const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DATA_FILE = "ipList.json";
 
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+
+// Serve static files from the React app (assuming build is in "dist")
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // File upload setup
 const upload = multer({ dest: "uploads/" });
@@ -291,6 +296,14 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+// Serve index.html on unmatched routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 
 // Serve Angular frontend
