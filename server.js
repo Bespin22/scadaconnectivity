@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const ping = require("ping");
@@ -6,7 +6,7 @@ const multer = require("multer");
 const xlsx = require("xlsx");
 
 const fs = require("fs");
-const express = require('express');
+
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 
 // Serve static files from the React app (assuming build is in "dist")
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static('dist/scadaconnectivity'));
 
 // File upload setup
 const upload = multer({ dest: "uploads/" });
