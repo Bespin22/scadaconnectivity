@@ -1,11 +1,5 @@
 services:
   - type: web
-    name: scadaconnectivity-app
-    env: node
-    region: oregon
-    buildCommand: npm run build
-    startCommand: node server.js
-    plan: free
-    envVars:
-      - key: NODE_VERSION
-        value: 18
+    name: scada-frontend
+    env: static
+    staticPublishPath: dist/scadaconnectivity
