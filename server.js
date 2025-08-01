@@ -289,22 +289,17 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
   }
 });
 
-
-
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+
+
 // Serve index.html on unmatched routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
 
 // Serve Angular frontend
 const frontendPath = path.join(__dirname, 'dist', 'scadaconnectivity');
@@ -314,3 +309,5 @@ app.use(express.static(frontendPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
+
+

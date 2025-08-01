@@ -1,14 +1,14 @@
 {
   "name": "scadaconnectivity",
   "version": "0.0.0",
- "scripts": {
-  "ng": "ng",
-  "start": "node server.js",
-   "build": "ng build --configuration production && xcopy src\\_redirects dist\\scadaconnectivity\\ /Y"
-},
-"engines": {
-  "node": "20.x"
-},
+  "scripts": {
+    "ng": "ng",
+    "start": "node server.js",
+    "build": "ng build --configuration production && xcopy src\\_redirects dist\\scadaconnectivity\\ /Y"
+  },
+  "engines": {
+    "node": "20.x"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.0",
@@ -35,7 +35,6 @@
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
     "zone.js": "~0.15.0"
-    
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.3",
@@ -59,7 +58,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",    
+  "license": "ISC",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Bespin22/scadaconnectivity/issues"
