@@ -1,10 +1,16 @@
+/* ================= GLOBAL ================= */
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #F0F3C8;
 }
 
+.hidden {
+  display: none !important;
+}
+
+/* ================= HEADER ================= */
 header {
   background-color: #59814C;
   color: #fff;
@@ -22,95 +28,117 @@ nav {
 
 nav button {
   background-color: #16a085;
-  color: white;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 nav button:hover {
   background-color: #bc1a42;
 }
 
+/* ================= SECTIONS ================= */
 .section {
-  display: none;
   padding: 20px;
-}
-
-.section:not(.hidden) {
-  display: block;
 }
 
 h2, h3 {
   color: #2c3e50;
 }
 
+/* ================= FILTER ================= */
+#location-filter {
+  margin: 10px 0 20px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+/* ================= BOX GRID ================= */
 .box-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
 }
 
+/* ================= BOX ================= */
 .box {
-  background: white;
+  background: #fff;
   border-radius: 8px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   padding: 15px;
+  transition: transform 0.2s ease;
 }
 
+.box:hover {
+  transform: translateY(-3px);
+}
+
+/* ================= STATUS COLORS ================= */
 .box.connected {
-  border: 2px solid green;
-  background-color: #8bffa8;
+  border-left: 6px solid #2ecc71;
+  background-color: #e9fbe9;
 }
 
 .box.disconnected {
-  border: 2px solid red;
-  background-color: #f17d70;
+  border-left: 6px solid #e74c3c;
+  background-color: #fdecea;
 }
 
+/* ================= FORM ================= */
 .form-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  
+  margin-bottom: 20px;
 }
 
 .form-container input {
+  flex: 1;
+  min-width: 180px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-
 }
 
-.form-container button {
+/* ================= BUTTONS ================= */
+.form-container button,
+.action-btn {
   background-color: #2980b9;
-  color: white;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 18px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.form-container button:hover {
+.form-container button:hover,
+.action-btn:hover {
   background-color: #3498db;
 }
 
-button {
+/* ================= CARD BUTTONS ================= */
+.box button {
+  margin-top: 8px;
+  width: 100%;
   background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-button:hover {
+.box button:hover {
   background-color: #c0392b;
 }
 
-#location-filter {
-  margin-bottom: 10px;
-  padding: 5px;
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  nav button {
+    width: 100%;
+  }
+
+  .form-container {
+    flex-direction: column;
+  }
 }

@@ -1,304 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SCADA - Home and IP Management</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCADA – IP Connectivity Monitoring</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>SCADA Application</h1>
-    <nav>
-      <button onclick="showSection('home')">Home</button>
-      <button onclick="showSection('ip-management')">IP Management</button>
-    </nav>
-  </header>
 
-  <!-- Home Section -->
-  <section id="home" class="section">
-    <h2>Home</h2>
+<!-- ================= HEADER ================= -->
+<header>
+  <h1>SCADA Connectivity Application</h1>
+  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('ip-management')">IP Management</button>
+  </nav>
+</header>
 
- <!-- Dropdown for filtering -->
- <label for="location-filter">Filter by Turbine Location:</label>
- <select id="location-filter">
-   <option value="all">All Turbine Locations</option>
- </select>
-<!-- Dropdown for filtering  ends-->
+<!-- ================= HOME ================= -->
+<section id="home" class="section">
+  <h2>Home – Turbine Connectivity</h2>
 
+  <label for="location-filter">Filter by Turbine Location:</label>
+  <select id="location-filter">
+    <option value="all">All Turbine Locations</option>
+  </select>
 
-    <div id="home-status" class="box-container">Loading IP statuses...</div>
-  </section>
+  <div id="home-status" class="box-container">
+    Loading turbine status...
+  </div>
+</section>
 
-  <!-- IP Management Section -->
-  <section id="ip-management" class="section hidden">
-    <h2>IP Management</h2>
+<!-- ================= IP MANAGEMENT ================= -->
+<section id="ip-management" class="section hidden">
+  <h2>IP Management</h2>
 
-    <!-- Add New IP -->
-    <h3>Add New IP</h3>
-    <div class="box-container">
-      <form id="add-ip-form" class="form-container">
-        <input type="text" id="ipName" placeholder="Name" required />
-        <input type="text" id="ipAddress" placeholder="IP Address" required />
-        <input type="text" id="ipTurbineType" placeholder="Turbine Type" required />
-        <input type="text" id="ipTurbineLocation" placeholder="Turbine Location" required />
-        <button type="submit">Add IP</button>
-      </form>
+  <!-- Add IP -->
+  <h3>Add New IP</h3>
+  <form id="add-ip-form" class="form-container">
+    <input type="text" id="ipName" placeholder="Turbine Name" required />
+    <input type="text" id="ipAddress" placeholder="IP Address" required />
+    <input type="text" id="ipTurbineType" placeholder="Turbine Type" required />
+    <input type="text" id="ipTurbineLocation" placeholder="Turbine Location" required />
+    <button type="submit">Add IP</button>
+  </form>
+
+  <!-- Bulk Upload -->
+  <h3>Bulk Upload (Excel)</h3>
+  <form id="bulk-upload-form">
+    <input type="file" id="bulkFile" accept=".xlsx" required />
+    <button type="submit">Upload</button>
+  </form>
+
+  <!-- Download -->
+  <h3>Download</h3>
+  <button id="download-ip-list">Download IP List (XLSX)</button>
+
+  <!-- IP List -->
+  <h3>Active IP List</h3>
+  <div id="ip-list" class="box-container">
+    Loading IP list...
+  </div>
+
+  <!-- Deleted IPs -->
+  <h3>Deleted IPs</h3>
+  <div id="deleted-ips" class="box-container">
+    Loading deleted IPs...
+  </div>
+</section>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+const API_BASE_URL = "http://localhost:3000";
+let ipData = [];
+
+/* ---------- Navigation ---------- */
+function showSection(sectionId) {
+  document.querySelectorAll(".section").forEach(sec =>
+    sec.classList.add("hidden")
+  );
+  document.getElementById(sectionId).classList.remove("hidden");
+}
+
+/* ---------- Load Ping Data ---------- */
+async function loadPingData() {
+  const res = await fetch(`${API_BASE_URL}/ping`);
+  ipData = await res.json();
+
+  renderHome(ipData);
+  renderIPList(ipData);
+  populateLocationFilter(ipData);
+}
+
+/* ---------- Home ---------- */
+function renderHome(data) {
+  const homeDiv = document.getElementById("home-status");
+  homeDiv.innerHTML = data.map(ip => `
+    <div class="box ${ip.status === "Connected" ? "connected" : "disconnected"}">
+      <p><strong>${ip.name}_${ip.turbineType}</strong></p>
+      <p>${ip.turbineLocation}</p>
+      <p>Status: ${ip.status}</p>
     </div>
-    <!-- Bulk Upload IPs -->
-    <h3>Bulk Upload IPs</h3>
-    <form id="bulk-upload-form" enctype="multipart/form-data">
-      <input type="file" id="bulkFile" accept=".xlsx" required />
-      <button type="submit">Upload</button>
-    </form>
-
-    <!-- Download All IPs -->
-    <h3>Download IP List</h3>
-    <button id="download-ip-list">Download IPs as XLSX</button>
-
-    <!-- IP List -->
-    <h3>IP List</h3>
-    <div id="ip-list" class="box-container">Loading IP list...</div>
-
-    <!-- Deleted IPs -->
-    <h3>Deleted IPs</h3>
-    <div id="deleted-ips" class="box-container">Loading deleted IPs...</div>
-  </section>
-
-  <script>
-    const API_BASE_URL = "http://localhost:3000";
-
-    // Function to show the selected section
-    function showSection(sectionId) {
-      document.querySelectorAll(".section").forEach((section) => {
-        section.classList.add("hidden");
-      });
-      document.getElementById(sectionId).classList.remove("hidden");
-    }
-
-    // Fetch and display IP statuses in Home
-    async function fetchIPStatus() {
-      const response = await fetch(`${API_BASE_URL}/ping`);
-      const data = await response.json();
-      const homeStatusDiv = document.getElementById("home-status");
-      homeStatusDiv.innerHTML = data
-        .map(
-          (ip) => `
-          <div class="box ${ip.status === "Connected" ? "connected" : "disconnected"}">
-            <p><strong>${ip.name}_${ip.turbineType}</strong></p>
-            <p>${ip.turbineLocation}</p>
-          </div>`
-        )
-        .join("");
-    }
-
-    // Fetch and display IP list
-    async function fetchIPList() {
-      try {
-        const response = await fetch(`${API_BASE_URL}/ping`);
-        const data = await response.json();
-  
-        const ipListDiv = document.getElementById("ip-list");
-        ipListDiv.innerHTML = data
-          .map(
-            (ip) => `
-              <div class="box">
-                <p><strong>Name:</strong> ${ip.name}_${ip.turbineType}</p>
-                <p><strong>IP:</strong> ${ip.ip}</p>
-                <p><strong>Turbine Location:</strong> ${ip.turbineLocation}</p>
-                <button onclick="editIP('${ip.name}', '${ip.ip}', '${ip.turbineType}', '${ip.turbineLocation}')">✏️ Edit</button>
-                <button onclick="deleteIP('${ip.ip}')">🗑️ Delete</button>
-              </div>
-            `
-          )
-          .join("");
-      } catch (error) {
-        console.error("Error fetching IP list:", error);
-      }
-    }
-
-//filter starts 
-async function fetchDataAndInitialize() {
-  try {
-    // Fetch the JSON data
-    const response = await fetch("http://localhost:3000/ping");
-    const data = await response.json();
-
-    // Extract unique turbine locations
-    const locations = [...new Set(data.map((item) => item.turbineLocation))];
-    const dropdown = document.getElementById("location-filter");
-
-    // Clear existing options
-    dropdown.innerHTML = '<option value="all">All Turbine Locations</option>';
-
-    // Populate the dropdown
-    locations.forEach((location) => {
-      const option = document.createElement("option");
-      option.value = location;
-      option.textContent = location;
-      dropdown.appendChild(option);
-    });
-
-    // Add event listener for filtering
-    dropdown.addEventListener("change", () => filterData(data));
-  } catch (error) {
-    console.error("Error fetching turbine locations:", error);
-  }
+  `).join("");
 }
 
-// Function to filter the displayed data based on the selected location
-function filterData(data) {
-  const selectedLocation = document.getElementById("location-filter").value;
-  const homeStatusDiv = document.getElementById("home-status");
+/* ---------- Filter ---------- */
+function populateLocationFilter(data) {
+  const dropdown = document.getElementById("location-filter");
+  const locations = [...new Set(data.map(d => d.turbineLocation))];
 
-  const filteredData =
-    selectedLocation === "all"
-      ? data
-      : data.filter((ip) => ip.turbineLocation === selectedLocation);
-
-  homeStatusDiv.innerHTML = filteredData
-    .map(
-      (ip) => `
-      <div class="box ${ip.status === "Connected" ? "connected" : "disconnected"}">
-        <p><strong>${ip.name}_${ip.turbineType}</strong></p>
-        <p>${ip.ip}</p>
-        <p>${ip.turbineLocation}</p>
-        <p>Status: ${ip.status}</p>
-      </div>`
-    )
-    .join("");
-}
-//filter ends
-
-// Fetch and display deleted IPs
-    async function fetchDeletedIPs() {
-      const response = await fetch(`${API_BASE_URL}/deleted-ips`);
-      const data = await response.json();
-      const deletedIpsDiv = document.getElementById("deleted-ips");
-      deletedIpsDiv.innerHTML = data
-        .map(
-          (ip) => `
-          <div class="box">
-            <p><strong>Name:</strong> ${ip.name}_${ip.turbineType}</p>
-            <p><strong>IP:</strong> ${ip.ip}</p>
-            <p><strong>Turbine Location:</strong> ${ip.turbineLocation}</p>
-            <button onclick="restoreIP('${ip.ip}')">♻️ Restore</button>
-            <button onclick="permanentlyDeleteIP('${ip.ip}')">❌ Permanently Delete</button>
-          </div>`
-        )
-        .join("");
-    }
-
- 
-    // Add a new IP
-  document.getElementById("add-ip-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = document.getElementById("ipName").value;
-    const ip = document.getElementById("ipAddress").value;
-    const turbineType = document.getElementById("ipTurbineType").value;
-    const turbineLocation = document.getElementById("ipTurbineLocation").value;
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/add-ip`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, ip, turbineType, turbineLocation }),
-      });
-
-      if (response.ok) {
-        alert("IP added successfully.");
-        fetchIPList();
-        e.target.reset();
-      } else {
-        const error = await response.json();
-        alert(`Error: ${error.message}`);
-      }
-    } catch (error) {
-      console.error("Error adding IP:", error);
-      alert("Failed to add IP. Please try again.");
-    }
+  dropdown.innerHTML = '<option value="all">All Turbine Locations</option>';
+  locations.forEach(loc => {
+    const opt = document.createElement("option");
+    opt.value = loc;
+    opt.textContent = loc;
+    dropdown.appendChild(opt);
   });
+}
 
-    // Bulk upload IPs
-    document.getElementById("bulk-upload-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const fileInput = document.getElementById("bulkFile");
-      const file = fileInput.files[0];
+document.getElementById("location-filter").addEventListener("change", () => {
+  const value = document.getElementById("location-filter").value;
+  const filtered = value === "all"
+    ? ipData
+    : ipData.filter(ip => ip.turbineLocation === value);
 
-      if (!file) {
-        alert("Please select a file.");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const response = await fetch(`${API_BASE_URL}/bulk-add`, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        alert(`Upload complete. Added: ${result.added}, Duplicates: ${result.duplicates}`);
-        fetchIPList();
-      }
-    });
-
-   // Bulk download IPs as XLSX
-document.getElementById("download-ip-list").addEventListener("click", () => {
-  window.location.href = `${API_BASE_URL}/export-turbines`;
+  renderHome(filtered);
 });
 
- 
+/* ---------- IP List ---------- */
+function renderIPList(data) {
+  const div = document.getElementById("ip-list");
+  div.innerHTML = data.map(ip => `
+    <div class="box">
+      <p><strong>Name:</strong> ${ip.name}</p>
+      <p><strong>IP:</strong> ${ip.ip}</p>
+      <p><strong>Type:</strong> ${ip.turbineType}</p>
+      <p><strong>Location:</strong> ${ip.turbineLocation}</p>
+      <button onclick="editIP('${ip.name}','${ip.ip}','${ip.turbineType}','${ip.turbineLocation}')">✏️ Edit</button>
+      <button onclick="deleteIP('${ip.ip}')">🗑️ Delete</button>
+    </div>
+  `).join("");
+}
 
-    // Edit an IP
-    async function editIP(name, ip, turbineType, turbineLocation) {
-      const newName = prompt("Enter new name:", name);
-      const newIp = prompt("Enter new IP address:", ip);
-      const newTurbineType = prompt("Enter new turbine type:", turbineType);
-      const newTurbineLocation = prompt("Enter new turbine location:", turbineLocation);
-      
+/* ---------- Deleted IPs ---------- */
+async function fetchDeletedIPs() {
+  const res = await fetch(`${API_BASE_URL}/deleted-ips`);
+  const data = await res.json();
 
-      if (newName && newIp && newTurbineType && newTurbineLocation) {
-        const response = await fetch(`${API_BASE_URL}/edit-ip`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ oldIp: ip, name: newName, ip: newIp, turbineType: newTurbineType, turbineLocation: newTurbineLocation }),
-        });
+  document.getElementById("deleted-ips").innerHTML = data.map(ip => `
+    <div class="box">
+      <p>${ip.name}_${ip.turbineType}</p>
+      <p>${ip.ip}</p>
+      <button onclick="restoreIP('${ip.ip}')">♻️ Restore</button>
+      <button onclick="permanentlyDeleteIP('${ip.ip}')">❌ Delete</button>
+    </div>
+  `).join("");
+}
 
-        if (response.ok) fetchIPList();
-      }
-    }
+/* ---------- Add IP ---------- */
+document.getElementById("add-ip-form").addEventListener("submit", async e => {
+  e.preventDefault();
 
-    // Delete an IP
-    async function deleteIP(ip) {
-      await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
-      fetchIPList();
-      fetchDeletedIPs();
-    }
+  const payload = {
+    name: ipName.value,
+    ip: ipAddress.value,
+    turbineType: ipTurbineType.value,
+    turbineLocation: ipTurbineLocation.value
+  };
 
-    // Restore a deleted IP
-    async function restoreIP(ip) {
-      await fetch(`${API_BASE_URL}/restore-ip/${ip}`, { method: "POST" });
-      fetchIPList();
-      fetchDeletedIPs();
-    }
+  const res = await fetch(`${API_BASE_URL}/add-ip`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
 
-    // Permanently delete an IP
-    async function permanentlyDeleteIP(ip) {
-      await fetch(`${API_BASE_URL}/permanently-delete-ip/${ip}`, { method: "DELETE" });
-      fetchDeletedIPs();
-    }
+  if (res.ok) {
+    alert("IP added successfully");
+    e.target.reset();
+    loadPingData();
+  } else {
+    const err = await res.json();
+    alert(err.message);
+  }
+});
 
-    
-    // Initialize
-    fetchIPStatus();
-    fetchIPList();
-    fetchDeletedIPs();
-   // Initialize the page
-   document.addEventListener('DOMContentLoaded', fetchDataAndInitialize);
+/* ---------- Bulk Upload ---------- */
+document.getElementById("bulk-upload-form").addEventListener("submit", async e => {
+  e.preventDefault();
 
-  </script>
+  const file = bulkFile.files[0];
+  const fd = new FormData();
+  fd.append("file", file);
+
+  const res = await fetch(`${API_BASE_URL}/bulk-add`, {
+    method: "POST",
+    body: fd
+  });
+
+  const result = await res.json();
+  alert(
+    `Bulk Upload Finished
+Added: ${result.added}
+Duplicates: ${result.duplicates}
+Skipped: ${result.skipped}`
+  );
+
+  loadPingData();
+});
+
+/* ---------- Download ---------- */
+document.getElementById("download-ip-list").onclick = () => {
+  window.location.href = `${API_BASE_URL}/export-turbines`;
+};
+
+/* ---------- Edit / Delete / Restore ---------- */
+async function editIP(name, ip, type, loc) {
+  const newName = prompt("Name", name);
+  const newIp = prompt("IP", ip);
+  const newType = prompt("Turbine Type", type);
+  const newLoc = prompt("Location", loc);
+
+  if (!newName || !newIp) return;
+
+  await fetch(`${API_BASE_URL}/edit-ip`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      oldIp: ip,
+      name: newName,
+      ip: newIp,
+      turbineType: newType,
+      turbineLocation: newLoc
+    })
+  });
+
+  loadPingData();
+}
+
+async function deleteIP(ip) {
+  await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
+  loadPingData();
+  fetchDeletedIPs();
+}
+
+async function restoreIP(ip) {
+  await fetch(`${API_BASE_URL}/restore-ip/${ip}`, { method: "POST" });
+  loadPingData();
+  fetchDeletedIPs();
+}
+
+async function permanentlyDeleteIP(ip) {
+  await fetch(`${API_BASE_URL}/permanently-delete-ip/${ip}`, { method: "DELETE" });
+  fetchDeletedIPs();
+}
+
+/* ---------- INIT ---------- */
+loadPingData();
+fetchDeletedIPs();
+</script>
+
 </body>
 </html>

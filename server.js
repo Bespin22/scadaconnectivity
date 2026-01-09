@@ -1,313 +1,225 @@
-const express = require('express');
+const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const ping = require("ping");
 const multer = require("multer");
 const xlsx = require("xlsx");
-
 const fs = require("fs");
+const path = require("path");
 
-const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const DATA_FILE = "ipList.json";
+const DATA_FILE = path.join(__dirname, "ipList.json");
 
-
-// Middleware
+/* ================= MIDDLEWARE ================= */
 app.use(cors());
 app.use(bodyParser.json());
 
+/* ================= STATIC FRONTEND ================= */
+const frontendPath = path.join(__dirname, "dist", "scadaconnectivity");
+app.use(express.static(frontendPath));
 
-// Serve static files from the React app (assuming build is in "dist")
-app.use(express.static('dist/scadaconnectivity'));
-
-// File upload setup
+/* ================= FILE UPLOAD ================= */
 const upload = multer({ dest: "uploads/" });
 
-// Load IP data from JSON file or initialize
+/* ================= DATA ================= */
 let ipData = [];
 let deletedIPs = [];
 
+/* ================= LOAD & SAVE ================= */
 function loadIPData() {
   if (fs.existsSync(DATA_FILE)) {
-    const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
-    ipData = data.ipList || [];
-    deletedIPs = data.deletedIPs || [];
-
+    const raw = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
+    ipData = raw.ipList || [];
+    deletedIPs = raw.deletedIPs || [];
   }
 }
 
 function saveIPData() {
-  fs.writeFileSync(DATA_FILE, JSON.stringify({ ipList: ipData, deletedIPs }, null, 2));
-
+  fs.writeFileSync(
+    DATA_FILE,
+    JSON.stringify({ ipList: ipData, deletedIPs }, null, 2)
+  );
 }
 
-// Load data on server startup
 loadIPData();
 
-// Routes
+/* ================= ROUTES ================= */
 
-// Fetch all IPs and their statuses
+/* ---- Ping Status ---- */
 app.get("/ping", async (req, res) => {
-  const pingPromises = ipData.map(async (entry) => {
-    const pingResult = await ping.promise.probe(entry.ip, { timeout: 2 });
-    return { ...entry, status: pingResult.alive ? "Connected" : "Disconnected" };
-  });
-
-  const results = await Promise.all(pingPromises);
-  res.json(results);
-});
-
-//filter starts 
-
-// Fetch data from iplist.json and populate the dropdown with turbine locations
-async function fetchDataAndInitialize() {
   try {
-    // Fetch the JSON file
-    const response = await fetch("iplist.json");
-    const data = await response.json();
-
-    // Extract unique turbine locations
-    const locations = [...new Set(data.map((item) => item.turbineLocation))];
-    const dropdown = document.getElementById("location-filter");
-
-    // Clear existing options in the dropdown
-    dropdown.innerHTML = '<option value="all">All Turbine Locations</option>';
-
-    // Populate the dropdown with unique locations
-    locations.forEach((location) => {
-      const option = document.createElement("option");
-      option.value = location;
-      option.textContent = location;
-      dropdown.appendChild(option);
-    });
-  } catch (error) {
-    console.error("Error fetching or processing JSON:", error);
-  }
-}
-
-
-//filter ends
-
-
-
-// Export all turbine data to XLSX and download
-app.get("/export-turbines", (req, res) => {
-  try {
-    const includeDeleted = req.query.includeDeleted === "true"; // Check if deleted IPs should be included
-    const filter = req.query.filter || null; // Optional filter parameter
-
-     // Prepare data for export
-     let exportData = [...ipData];
-     if (includeDeleted) {
-       exportData = [...exportData, ...deletedIPs];
-     }
- 
-     if (filter) {
-       exportData = exportData.filter((entry) =>
-         entry.name.toLowerCase().includes(filter.toLowerCase())
-       );
-     }
-
-
-
-
- // Ensure there's data to export
- if (exportData.length === 0) {
-  return res.status(404).json({ message: "No data available for export." });
-}
-
-
- // Create a new Excel workbook and worksheet
- const workbook = xlsx.utils.book_new();
- const worksheet = xlsx.utils.json_to_sheet(exportData);
- xlsx.utils.book_append_sheet(workbook, worksheet, "IP List");
-
-   // Generate file name
-   const timestamp = new Date().toISOString().replace(/[:.-]/g, "_");
-   const fileName = `IP_List_${timestamp}.xlsx`;
-   const filePath = path.join(__dirname, fileName);
-
-
-    // Write the workbook to the server and send it for download
-    xlsx.writeFile(workbook, filePath);
-    res.download(filePath, fileName, (err) => {
-      if (err) {
-        console.error("Error downloading file:", err);
-        res.status(500).send("Failed to download the file.");
-      }
-
-      // Clean up: delete the file after sending it
-      fs.unlinkSync(filePath);
-    });
-  } catch (error) {
-    console.error("Error exporting IPs:", error);
-    res.status(500).send("Failed to export IPs.");
+    const results = await Promise.all(
+      ipData.map(async (entry) => {
+        try {
+          const r = await ping.promise.probe(entry.ip, { timeout: 2 });
+          return { ...entry, status: r.alive ? "Connected" : "Disconnected" };
+        } catch {
+          return { ...entry, status: "Disconnected" };
+        }
+      })
+    );
+    res.json(results);
+  } catch {
+    res.status(500).json({ error: "Ping failed" });
   }
 });
 
-
-
-// Add a new IP entry
+/* ---- Add IP ---- */
 app.post("/add-ip", (req, res) => {
   const { name, ip, turbineType, turbineLocation } = req.body;
 
   if (!name || !ip || !turbineType || !turbineLocation) {
-    return res.status(400).json({ message: "All fields are required." });
+    return res.status(400).json({ message: "All fields required" });
   }
 
-  if (ipData.some((entry) => entry.ip === ip)) {
-    return res.status(400).json({ message: "IP address already exists." });
+  if (ipData.some(e => e.ip === ip)) {
+    return res.status(400).json({ message: "IP already exists" });
   }
 
-  ipData.push({ name, ip, turbineType, turbineLocation, status: "Disconnected" });
+  ipData.push({ name, ip, turbineType, turbineLocation });
   saveIPData();
-  res.status(201).json({ message: "IP added successfully." });
+  res.status(201).json({ message: "IP added" });
 });
 
-// Edit an IP entry
+/* ---- Edit IP ---- */
 app.put("/edit-ip", (req, res) => {
   const { oldIp, name, ip, turbineType, turbineLocation } = req.body;
 
-  if (!oldIp || !name || !ip || !turbineType || !turbineLocation) {
-    return res.status(400).json({ message: "All fields are required." });
+  const index = ipData.findIndex(e => e.ip === oldIp);
+  if (index === -1) {
+    return res.status(404).json({ message: "IP not found" });
   }
 
-  const ipIndex = ipData.findIndex((entry) => entry.ip === oldIp);
-  if (ipIndex === -1) {
-    return res.status(404).json({ message: "IP not found." });
-  }
-
-  ipData[ipIndex] = { name, ip, turbineType, turbineLocation, status: "Disconnected" };
+  ipData[index] = { name, ip, turbineType, turbineLocation };
   saveIPData();
-  res.json({ message: "IP updated successfully." });
+  res.json({ message: "IP updated" });
 });
 
-
-// Delete an IP entry
+/* ---- Delete IP (Soft) ---- */
 app.delete("/delete-ip/:ip", (req, res) => {
-  const { ip } = req.params;
-
-  const ipIndex = ipData.findIndex((entry) => entry.ip === ip);
-  if (ipIndex === -1) {
-    return res.status(404).json({ message: "IP not found." });
+  const index = ipData.findIndex(e => e.ip === req.params.ip);
+  if (index === -1) {
+    return res.status(404).json({ message: "IP not found" });
   }
 
-  const [deletedIP] = ipData.splice(ipIndex, 1);
-  deletedIPs.push(deletedIP);
+  deletedIPs.push(ipData[index]);
+  ipData.splice(index, 1);
   saveIPData();
-  res.json({ message: "IP deleted successfully." });
+  res.json({ message: "IP deleted" });
 });
 
-// Fetch deleted IPs
+/* ---- Deleted IPs ---- */
 app.get("/deleted-ips", (req, res) => {
   res.json(deletedIPs);
 });
 
-// Restore a deleted IP
+/* ---- Restore IP ---- */
 app.post("/restore-ip/:ip", (req, res) => {
-  const { ip } = req.params;
-
-  const ipIndex = deletedIPs.findIndex((entry) => entry.ip === ip);
-  if (ipIndex === -1) {
-    return res.status(404).json({ message: "Deleted IP not found." });
+  const index = deletedIPs.findIndex(e => e.ip === req.params.ip);
+  if (index === -1) {
+    return res.status(404).json({ message: "Deleted IP not found" });
   }
 
-
-  const [restoredIP] = deletedIPs.splice(ipIndex, 1);
-  ipData.push(restoredIP);
+  ipData.push(deletedIPs[index]);
+  deletedIPs.splice(index, 1);
   saveIPData();
-  res.json({ message: "IP restored successfully." });
-
+  res.json({ message: "IP restored" });
 });
 
-// Permanently delete an IP from the deleted list
+/* ---- Permanent Delete ---- */
 app.delete("/permanently-delete-ip/:ip", (req, res) => {
-  const { ip } = req.params;
-  const ipIndex = deletedIPs.findIndex((entry) => entry.ip === ip);
-  if (ipIndex === -1) {
-    return res.status(404).json({ message: "Deleted IP not found." });
+  const index = deletedIPs.findIndex(e => e.ip === req.params.ip);
+  if (index === -1) {
+    return res.status(404).json({ message: "IP not found" });
   }
 
-  deletedIPs.splice(ipIndex, 1);
+  deletedIPs.splice(index, 1);
   saveIPData();
-  res.json({ message: "IP permanently deleted." });
+  res.json({ message: "IP permanently deleted" });
 });
 
-// Bulk upload IPs from an XLSX file
+/* ---- BULK UPLOAD (FIXED) ---- */
 app.post("/bulk-add", upload.single("file"), (req, res) => {
   if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded." });
+    return res.status(400).json({ error: "No file uploaded" });
   }
 
   try {
-    const filePath = path.resolve(req.file.path);
-    const workbook = xlsx.readFile(filePath);
-    const sheetName = workbook.SheetNames[0];
-    const sheetData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
+    const workbook = xlsx.readFile(req.file.path);
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = xlsx.utils.sheet_to_json(sheet, { defval: "" });
 
-    const newEntries = [];
-    const duplicates = [];
-    const errors = [];
+    let added = 0;
+    let duplicates = 0;
+    let skipped = 0;
 
-    sheetData.forEach((row) => {
-      const { Name, IP, TurbineType, TurbineLocation } = row;
-
-      if (!Name || !IP || !TurbineType || !TurbineLocation) {
-        errors.push(row);
-        return;
-      }
-
-      if (ipData.find((entry) => entry.ip === IP)) {
-        duplicates.push(row);
-        return;
-      }
-
-      newEntries.push({
-        name: Name,
-        ip: IP,
-        turbineType: TurbineType,
-        turbineLocation: TurbineLocation,
-        status: "Disconnected",
+    rows.forEach(row => {
+      // 🔥 Normalize keys (trim spaces)
+      const normalizedRow = {};
+      Object.keys(row).forEach(k => {
+        normalizedRow[k.trim()] = row[k];
       });
+
+      const name = normalizedRow["Name"];
+      const ip = normalizedRow["IP"];
+      const turbineType = normalizedRow["Turbine Type"];
+      const turbineLocation = normalizedRow["Turbine Location"];
+
+      if (!name || !ip || !turbineType || !turbineLocation) {
+        skipped++;
+        return;
+      }
+
+      if (ipData.some(e => e.ip === ip)) {
+        duplicates++;
+        return;
+      }
+
+      ipData.push({
+        name: String(name).trim(),
+        ip: String(ip).trim(),
+        turbineType: String(turbineType).trim(),
+        turbineLocation: String(turbineLocation).trim()
+      });
+
+      added++;
     });
 
-    ipData = [...ipData, ...newEntries];
     saveIPData();
-    fs.unlinkSync(filePath);
+    fs.unlinkSync(req.file.path);
 
     res.json({
-      message: "Bulk upload completed.",
-      added: newEntries.length,
-      duplicates: duplicates.length,
-      errors: errors.length,
-      details: { newEntries, duplicates, errors },
+      message: "Bulk upload completed",
+      added,
+      duplicates,
+      skipped
     });
-  } catch (error) {
-    console.error("Error processing bulk upload:", error);
-    res.status(500).json({ error: "Failed to process bulk upload." });
+  } catch (err) {
+    console.error("Bulk upload error:", err);
+    res.status(500).json({ error: "Bulk upload failed" });
   }
 });
 
-// Start the server
+
+/* ---- Export XLSX ---- */
+app.get("/export-turbines", (req, res) => {
+  const wb = xlsx.utils.book_new();
+  const ws = xlsx.utils.json_to_sheet(ipData);
+  xlsx.utils.book_append_sheet(wb, ws, "IP_List");
+
+  const fileName = `IP_List_${Date.now()}.xlsx`;
+  xlsx.writeFile(wb, fileName);
+
+  res.download(fileName, () => fs.unlinkSync(fileName));
+});
+
+/* ================= SPA FALLBACK ================= */
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
+/* ================= START ================= */
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });
-
-
-
-// Serve index.html on unmatched routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-// Serve Angular frontend
-const frontendPath = path.join(__dirname, 'dist', 'scadaconnectivity');
-app.use(express.static(frontendPath));
-
-// For SPA: redirect all unknown routes to index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
-});
-
-

@@ -1,13 +1,6 @@
 {
   "ipList": [
     {
-      "name": "GBR 117",
-      "ip": "192.168.16.2",
-      "turbineType": "b",
-      "turbineLocation": "KA",
-      "status": "Disconnected"
-    },
-    {
       "name": "GAL04",
       "ip": "192.168.10.9",
       "turbineType": "G58",
@@ -405,6 +398,978 @@
       "turbineType": "G58",
       "turbineLocation": "RJ-LUDRWA",
       "status": "Disconnected"
+    },
+    {
+      "name": "AGT01",
+      "ip": "192.168.5.42",
+      "turbineType": "G59",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "AMF-849",
+      "ip": "192.168.18.42",
+      "turbineType": "G60",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "AMM-251",
+      "ip": "192.168.7.210",
+      "turbineType": "G61",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "AMM-275",
+      "ip": "192.168.3.82",
+      "turbineType": "G62",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "AMP-560",
+      "ip": "192.168.7.26",
+      "turbineType": "G63",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ARVI01",
+      "ip": "192.168.5.124",
+      "turbineType": "G64",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ATLA01",
+      "ip": "192.168.5.50",
+      "turbineType": "G65",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ATLAS",
+      "ip": "192.168.11.106",
+      "turbineType": "G66",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "AVN 01",
+      "ip": "192.168.9.114",
+      "turbineType": "G67",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "AVN 02",
+      "ip": "192.168.9.122",
+      "turbineType": "G68",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "AVN 03",
+      "ip": "192.168.9.130",
+      "turbineType": "G69",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "AVN 04",
+      "ip": "192.168.9.138",
+      "turbineType": "G70",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "AVN05",
+      "ip": "192.168.5.178",
+      "turbineType": "G71",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "BAMM 01",
+      "ip": "192.168.9.146",
+      "turbineType": "G72",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "BANS-547",
+      "ip": "192.168.22.58",
+      "turbineType": "G73",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "BANS-865",
+      "ip": "192.168.22.50",
+      "turbineType": "G74",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "BPM-595",
+      "ip": "192.168.7.147",
+      "turbineType": "G75",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "CHAM01",
+      "ip": "192.168.5.2",
+      "turbineType": "G76",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "CHER01",
+      "ip": "192.168.5.26",
+      "turbineType": "G77",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "CHER02",
+      "ip": "192.168.5.34",
+      "turbineType": "G78",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "CYP-25",
+      "ip": "192.168.7.58",
+      "turbineType": "G79",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "CYP-785",
+      "ip": "192.168.7.34",
+      "turbineType": "G80",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "DOL-19",
+      "ip": "192.168.3.106",
+      "turbineType": "G81",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "DR",
+      "ip": "192.168.11.114",
+      "turbineType": "G82",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "Dr-100G",
+      "ip": "192.168.11.34",
+      "turbineType": "G83",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "Dr-73",
+      "ip": "192.168.11.2",
+      "turbineType": "G84",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "DSM-529",
+      "ip": "192.168.18.26",
+      "turbineType": "G85",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ERDY01",
+      "ip": "192.168.5.90",
+      "turbineType": "G86",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ERDY02",
+      "ip": "192.168.5.98",
+      "turbineType": "G87",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ERDY03",
+      "ip": "192.168.5.106",
+      "turbineType": "G88",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ERDY04",
+      "ip": "192.168.5.114",
+      "turbineType": "G89",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ERDY05",
+      "ip": "192.168.5.122",
+      "turbineType": "G90",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ESM-1019",
+      "ip": "192.168.7.178",
+      "turbineType": "G91",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ESM-1023",
+      "ip": "192.168.7.179",
+      "turbineType": "G92",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ESM-1078",
+      "ip": "192.168.7.162",
+      "turbineType": "G93",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ESM-244",
+      "ip": "192.168.7.194",
+      "turbineType": "G94",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ESM-523",
+      "ip": "192.168.7.186",
+      "turbineType": "G95",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "EVER-1397",
+      "ip": "192.168.4.154",
+      "turbineType": "G96",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "EVER-264",
+      "ip": "192.168.6.82",
+      "turbineType": "G97",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "EVER-269",
+      "ip": "192.168.6.90",
+      "turbineType": "G98",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "EVER-275",
+      "ip": "192.168.6.93",
+      "turbineType": "G99",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "EVER-316",
+      "ip": "192.168.6.86",
+      "turbineType": "G100",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "EVER-468",
+      "ip": "192.168.5.82",
+      "turbineType": "G101",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "FAB-201",
+      "ip": "192.168.7.202",
+      "turbineType": "G102",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "FSM-1225",
+      "ip": "192.168.7.66",
+      "turbineType": "G103",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "GAL-08",
+      "ip": "192.168.10.122",
+      "turbineType": "G111",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-09",
+      "ip": "192.168.10.114",
+      "turbineType": "G112",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-19",
+      "ip": "192.168.10.123",
+      "turbineType": "G118",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-29",
+      "ip": "192.168.10.242",
+      "turbineType": "G124",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GRN-138",
+      "ip": "192.168.17.42",
+      "turbineType": "G126",
+      "turbineLocation": "RON"
+    },
+    {
+      "name": "GRN-153",
+      "ip": "192.168.17.2",
+      "turbineType": "G127",
+      "turbineLocation": "RON"
+    },
+    {
+      "name": "GRN-154",
+      "ip": "192.168.17.34",
+      "turbineType": "G128",
+      "turbineLocation": "RON"
+    },
+    {
+      "name": "GRN-197",
+      "ip": "192.168.17.26",
+      "turbineType": "G129",
+      "turbineLocation": "RON"
+    },
+    {
+      "name": "GRN-229",
+      "ip": "192.168.17.18",
+      "turbineType": "G130",
+      "turbineLocation": "RON"
+    },
+    {
+      "name": "HIMA01",
+      "ip": "192.168.5.10",
+      "turbineType": "G133",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "HUDH01",
+      "ip": "192.168.5.18",
+      "turbineType": "G134",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "INDEX",
+      "ip": "192.168.9.66",
+      "turbineType": "G135",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "JAY-394",
+      "ip": "192.168.18.2",
+      "turbineType": "G136",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "JK01",
+      "ip": "192.168.1.26",
+      "turbineType": "G137",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "JK02",
+      "ip": "192.168.1.34",
+      "turbineType": "G138",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "JKC-494",
+      "ip": "192.168.3.90",
+      "turbineType": "G139",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "JKC-97",
+      "ip": "192.168.3.114",
+      "turbineType": "G140",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "KAMAL",
+      "ip": "192.168.11.122",
+      "turbineType": "G141",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "KPN-609",
+      "ip": "192.168.18.18",
+      "turbineType": "G142",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "KPR 01",
+      "ip": "192.168.5.186",
+      "turbineType": "G143",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 02",
+      "ip": "192.168.5.194",
+      "turbineType": "G144",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 03",
+      "ip": "192.168.5.202",
+      "turbineType": "G145",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 04",
+      "ip": "192.168.5.210",
+      "turbineType": "G146",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 05",
+      "ip": "192.168.5.218",
+      "turbineType": "G147",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 06",
+      "ip": "192.168.5.226",
+      "turbineType": "G148",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 07",
+      "ip": "192.168.5.234",
+      "turbineType": "G149",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 08",
+      "ip": "192.168.5.242",
+      "turbineType": "G150",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 09",
+      "ip": "192.168.5.250",
+      "turbineType": "G151",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 10",
+      "ip": "192.168.9.2",
+      "turbineType": "G152",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 11",
+      "ip": "192.168.9.10",
+      "turbineType": "G153",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 12",
+      "ip": "192.168.9.18",
+      "turbineType": "G154",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 13",
+      "ip": "192.168.9.26",
+      "turbineType": "G155",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 14",
+      "ip": "192.168.9.34",
+      "turbineType": "G156",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 15",
+      "ip": "192.168.9.42",
+      "turbineType": "G157",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 16",
+      "ip": "192.168.9.50",
+      "turbineType": "G158",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 19",
+      "ip": "192.168.5.125",
+      "turbineType": "G159",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 20",
+      "ip": "192.168.5.180",
+      "turbineType": "G160",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 21",
+      "ip": "192.168.5.179",
+      "turbineType": "G161",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 22",
+      "ip": "192.168.5.181",
+      "turbineType": "G162",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 23",
+      "ip": "192.168.9.90",
+      "turbineType": "G163",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 24",
+      "ip": "192.168.9.98",
+      "turbineType": "G164",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 25",
+      "ip": "192.168.9.106",
+      "turbineType": "G165",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR17",
+      "ip": "192.168.5.170",
+      "turbineType": "G166",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR18",
+      "ip": "192.168.5.162",
+      "turbineType": "G167",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR26",
+      "ip": "192.168.9.162",
+      "turbineType": "G168",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KRAJ01",
+      "ip": "192.168.9.58",
+      "turbineType": "G169",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KRAJ02",
+      "ip": "192.168.9.74",
+      "turbineType": "G170",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KRV-202",
+      "ip": "192.168.11.26",
+      "turbineType": "G171",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "KRV-57",
+      "ip": "192.168.11.18",
+      "turbineType": "G172",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "KRV-93",
+      "ip": "192.168.11.10",
+      "turbineType": "G173",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "LEC-257",
+      "ip": "192.168.7.130",
+      "turbineType": "G174",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "MAH-685",
+      "ip": "192.168.18.34",
+      "turbineType": "G175",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "MBS-829",
+      "ip": "192.168.7.146",
+      "turbineType": "G180",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "MEHALA",
+      "ip": "192.168.1.130",
+      "turbineType": "G181",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "MSL-862",
+      "ip": "192.168.7.250",
+      "turbineType": "G193",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "NAGA-01",
+      "ip": "192.168.9.218",
+      "turbineType": "G194",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "NCH-623",
+      "ip": "192.168.3.98",
+      "turbineType": "G195",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "NEVA-01",
+      "ip": "192.168.9.202",
+      "turbineType": "G202",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "NEVA-02",
+      "ip": "192.168.9.210",
+      "turbineType": "G203",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "NGA-1035",
+      "ip": "192.168.7.234",
+      "turbineType": "G204",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PNT01",
+      "ip": "192.168.6.138",
+      "turbineType": "G217",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "PNT02",
+      "ip": "192.168.6.146",
+      "turbineType": "G218",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "PSM-150",
+      "ip": "192.168.7.114",
+      "turbineType": "G219",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-152",
+      "ip": "192.168.7.122",
+      "turbineType": "G220",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-239",
+      "ip": "192.168.3.10",
+      "turbineType": "G221",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-254",
+      "ip": "192.168.3.18",
+      "turbineType": "G222",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-291",
+      "ip": "192.168.3.26",
+      "turbineType": "G223",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-292",
+      "ip": "192.168.3.50",
+      "turbineType": "G224",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-294",
+      "ip": "192.168.3.34",
+      "turbineType": "G225",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-319",
+      "ip": "192.168.7.106",
+      "turbineType": "G226",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-328",
+      "ip": "192.168.2.210",
+      "turbineType": "G227",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-413",
+      "ip": "192.168.3.42",
+      "turbineType": "G228",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-460",
+      "ip": "192.168.2.202",
+      "turbineType": "G229",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-686",
+      "ip": "192.168.7.138",
+      "turbineType": "G230",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PSM-828",
+      "ip": "192.168.7.11",
+      "turbineType": "G231",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "RAMV-01",
+      "ip": "192.168.9.226",
+      "turbineType": "G232",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "RBA-01",
+      "ip": "192.168.9.82",
+      "turbineType": "G233",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "RCM-488",
+      "ip": "192.168.18.10",
+      "turbineType": "G234",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "RSM-1302",
+      "ip": "192.168.7.226",
+      "turbineType": "G235",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "RSM-659",
+      "ip": "192.168.7.242",
+      "turbineType": "G236",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SEETH",
+      "ip": "192.168.9.154",
+      "turbineType": "G237",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHC-1039",
+      "ip": "192.168.7.218",
+      "turbineType": "G238",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SHIN01",
+      "ip": "192.168.5.58",
+      "turbineType": "G239",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHIN02",
+      "ip": "192.168.5.66",
+      "turbineType": "G240",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHIN03",
+      "ip": "192.168.5.130",
+      "turbineType": "G241",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHIN04",
+      "ip": "192.168.5.138",
+      "turbineType": "G242",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHIN05",
+      "ip": "192.168.5.74",
+      "turbineType": "G243",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHIN06",
+      "ip": "192.168.5.146",
+      "turbineType": "G244",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SHP-929",
+      "ip": "192.168.3.74",
+      "turbineType": "G245",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-1093",
+      "ip": "192.168.7.50",
+      "turbineType": "G246",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-140",
+      "ip": "192.168.2.186",
+      "turbineType": "G247",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-186",
+      "ip": "192.168.3.58",
+      "turbineType": "G248",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-187",
+      "ip": "192.168.3.66",
+      "turbineType": "G249",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-265",
+      "ip": "192.168.7.98",
+      "turbineType": "G250",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-315",
+      "ip": "192.168.3.2",
+      "turbineType": "G251",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-372",
+      "ip": "192.168.7.10",
+      "turbineType": "G252",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-40",
+      "ip": "192.168.2.194",
+      "turbineType": "G253",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-448",
+      "ip": "192.168.2.242",
+      "turbineType": "G254",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-449",
+      "ip": "192.168.2.250",
+      "turbineType": "G255",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-459",
+      "ip": "192.168.2.234",
+      "turbineType": "G256",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-52",
+      "ip": "192.168.2.218",
+      "turbineType": "G257",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-547",
+      "ip": "192.168.7.20",
+      "turbineType": "G258",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-57",
+      "ip": "192.168.2.178",
+      "turbineType": "G259",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-581",
+      "ip": "192.168.7.18",
+      "turbineType": "G260",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-662",
+      "ip": "192.168.7.82",
+      "turbineType": "G261",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-664",
+      "ip": "192.168.7.90",
+      "turbineType": "G262",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-672",
+      "ip": "192.168.7.74",
+      "turbineType": "G263",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-68",
+      "ip": "192.168.7.2",
+      "turbineType": "G264",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-683",
+      "ip": "192.168.7.19",
+      "turbineType": "G265",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-719",
+      "ip": "192.168.7.170",
+      "turbineType": "G266",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSM-86",
+      "ip": "192.168.2.226",
+      "turbineType": "G267",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SSTE02",
+      "ip": "192.168.6.154",
+      "turbineType": "G268",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "SSTE03",
+      "ip": "192.168.8.6",
+      "turbineType": "G269",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "STI-02",
+      "ip": "192.168.18.50",
+      "turbineType": "G272",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "STI-1016",
+      "ip": "192.168.18.58",
+      "turbineType": "G273",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "SVAI01",
+      "ip": "192.168.5.123",
+      "turbineType": "G274",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "SVM-328",
+      "ip": "192.168.7.154",
+      "turbineType": "G275",
+      "turbineLocation": "Udumalapet"
     }
   ],
   "deletedIPs": [
@@ -546,6 +1511,20 @@
       "ip": "192.168.13.86",
       "turbineType": "G58",
       "turbineLocation": "Sri lanka",
+      "status": "Disconnected"
+    },
+    {
+      "name": "dngkl",
+      "ip": "13.32.123.23",
+      "turbineType": "agadzh",
+      "turbineLocation": "ASGRFDA",
+      "status": "Disconnected"
+    },
+    {
+      "name": "GBR 117",
+      "ip": "192.168.16.2",
+      "turbineType": "b",
+      "turbineLocation": "KA",
       "status": "Disconnected"
     }
   ]
