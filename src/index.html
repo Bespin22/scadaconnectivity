@@ -19,12 +19,12 @@
 <!-- ================= HOME ================= -->
 <section id="home" class="section">
   <h2>Home – Turbine Connectivity</h2>
-
+<div id="summary-bar" class="summary-bar"></div>
   <label>Filter by Location:</label>
   <select id="location-filter">
     <option value="all">All</option>
   </select>
-
+<div id="summary-bar" class="summary-bar"></div>           
   <div id="home-status" class="box-container"></div>
 </section>
 
@@ -67,6 +67,24 @@
 const API_BASE_URL = "http://localhost:3000";
 let ipData = [];
 
+function renderSummary(data) {
+  const total = data.length;
+
+  const ipConnected = data.filter(t => t.ipStatus === "Connected").length;
+  const plcConnected = data.filter(t => t.plcStatus === "Connected").length;
+
+  const issues = data.filter(t =>
+    t.ipStatus !== "Connected" || t.plcStatus !== "Connected"
+  ).length;
+
+  document.getElementById("summary-bar").innerHTML = `
+    <div class="summary-box blue">Total: ${total}</div>
+    <div class="summary-box green">IP Connected: ${ipConnected}</div>
+    <div class="summary-box green">PLC Connected: ${plcConnected}</div>
+    <div class="summary-box red">Issues: ${issues}</div>
+  `;
+}
+
 /* ---------- AUTO PLC ---------- */
 function autoFillPlcIp() {
   const ip = document.getElementById("ipAddress").value.trim();
@@ -91,7 +109,7 @@ async function loadPingData() {
   try {
     const res = await fetch(`${API_BASE_URL}/ping`);
     ipData = await res.json();
-
+    renderSummary(ipData);
     renderHome(ipData);
     renderIPList(ipData);
     populateFilter(ipData);

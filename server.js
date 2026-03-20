@@ -27,12 +27,14 @@ let ipData = [];
 let deletedIPs = [];
 
 /* ================= LOAD ================= */
-function loadIPData() {
+function loadIPData() { 
+  
   if (fs.existsSync(DATA_FILE)) {
     const raw = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
     ipData = raw.ipList || [];
     deletedIPs = raw.deletedIPs || [];
   }
+ renderSummary(ipData);
 }
 
 /* ================= SAVE ================= */
@@ -248,7 +250,7 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
       const ip = r["IP"];
       let plcIp = r["PLC IP"];
       const turbineType = r["Turbine Type"];
-      const turbineLocation = r["Turbine Location"];
+      const turbineLocation = r[" "];
 
       if (!name || !ip || !turbineType || !turbineLocation) {
         skipped++;

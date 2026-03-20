@@ -44,6 +44,10 @@ nav button:hover {
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 18px;
   margin-top: 15px;
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+  gap: 8px;
 }
 
 /* ================= CARD ================= */
@@ -218,4 +222,33 @@ nav button:hover {
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 8px;
 }
+/* ================= summary ================= */
+.summary-bar {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
 
+.summary-box {
+  background: #1e1e1e;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  min-width: 160px;
+}
+
+.summary-box.green {
+  background: #2ecc71;
+}
+
+.summary-box.red {
+  background: #e74c3c;
+}
+
+.summary-box.blue {
+  background: #3498db;
+}
