@@ -1,9 +1,9 @@
 /* ================= GLOBAL ================= */
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F0F3C8;
+  background-color: #eef2d3;
 }
 
 .hidden {
@@ -12,133 +12,192 @@ body {
 
 /* ================= HEADER ================= */
 header {
-  background-color: #59814C;
-  color: #fff;
-  padding: 15px;
+  background: linear-gradient(135deg, #4e7d4f, #6aa84f);
+  color: white;
+  padding: 18px;
   text-align: center;
-}
-
-header h1 {
-  margin: 0;
-}
-
-nav {
-  margin-top: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
 nav button {
   background-color: #16a085;
-  color: #fff;
+  color: white;
   border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin: 5px;
+  padding: 10px 18px;
+  margin: 6px;
   border-radius: 6px;
-  font-weight: bold;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 nav button:hover {
-  background-color: #bc1a42;
+  background-color: #0e6655;
 }
 
 /* ================= SECTIONS ================= */
 .section {
-  padding: 20px;
+  padding: 25px;
 }
 
-h2, h3 {
-  color: #2c3e50;
-}
-
-/* ================= FILTER ================= */
-#location-filter {
-  margin: 10px 0 20px;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #aaa;
-}
-
-/* ================= BOX GRID ================= */
+/* ================= GRID ================= */
 .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 15px;
 }
 
-/* ================= BOX ================= */
+/* ================= CARD ================= */
 .box {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  padding: 15px;
-  transition: transform 0.2s ease;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .box:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
-/* ================= STATUS COLORS ================= */
-.box.connected {
-  border-left: 6px solid #2ecc71;
-  background-color: #e9fbe9;
+/* ================= TEXT ================= */
+.box p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #2c3e50;
 }
 
-.box.disconnected {
-  border-left: 6px solid #e74c3c;
-  background-color: #fdecea;
+.box strong {
+  font-size: 16px;
+  color: #1a252f;
+}
+
+/* ================= STATUS BOX ================= */
+.modern-box {
+  padding: 0;
+  overflow: hidden;
+  width: 180px;
+}
+
+.status {
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.status.ip {
+  background: #3498db;
+}
+
+.status.plc {
+  background: #9b59b6;
+}
+
+.green {
+  background-color: #2ecc71 !important;
+}
+
+.red {
+  background-color: #e74c3c !important;
+}
+
+.box-label {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
 }
 
 /* ================= FORM ================= */
 .form-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .form-container input {
-  flex: 1;
-  min-width: 180px;
   padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  min-width: 200px;
 }
 
 /* ================= BUTTONS ================= */
-.form-container button,
-.action-btn {
-  background-color: #2980b9;
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.form-container button:hover,
-.action-btn:hover {
-  background-color: #3498db;
-}
-
-/* ================= CARD BUTTONS ================= */
 .box button {
   margin-top: 8px;
-  width: 100%;
-  background-color: #e74c3c;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
-.box button:hover {
-  background-color: #c0392b;
+/* Edit button */
+.box button:first-of-type {
+  background-color: #3498db;
+  color: white;
+}
+
+.box button:first-of-type:hover {
+  background-color: #21618c;
+}
+
+/* Delete button */
+.box button:last-of-type {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.box button:last-of-type:hover {
+  background-color: #922b21;
+}
+
+/* ================= FILTER ================= */
+#location-filter {
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-left: 10px;
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 600px) {
+  .box-container {
+    grid-template-columns: 1fr;
+  }
+
   nav button {
     width: 100%;
   }
+}
 
-  .form-container {
-    flex-direction: column;
-  }
+/* ================= SITE GROUP ================= */
+
+.site-section {
+  width: 100%;
+  margin-bottom: 25px;
+}
+.site-header {
+  width: 100%;
+  background: #000;
+  color: #00ff88;
+  padding: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-top: 2px solid #00ff88;
+  border-bottom: 2px solid #00ff88;
+}
+
+.site-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+#home-status {
+  display: block;   /* 🔥 VERY IMPORTANT */
 }

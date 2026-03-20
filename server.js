@@ -15,18 +15,18 @@ const DATA_FILE = path.join(__dirname, "ipList.json");
 app.use(cors());
 app.use(bodyParser.json());
 
-/* ================= STATIC FRONTEND ================= */
+/* ================= STATIC ================= */
 const frontendPath = path.join(__dirname, "dist", "scadaconnectivity");
 app.use(express.static(frontendPath));
 
-/* ================= FILE UPLOAD ================= */
+/* ================= UPLOAD ================= */
 const upload = multer({ dest: "uploads/" });
 
 /* ================= DATA ================= */
 let ipData = [];
 let deletedIPs = [];
 
-/* ================= LOAD & SAVE ================= */
+/* ================= LOAD ================= */
 function loadIPData() {
   if (fs.existsSync(DATA_FILE)) {
     const raw = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
@@ -35,6 +35,7 @@ function loadIPData() {
   }
 }
 
+/* ================= SAVE ================= */
 function saveIPData() {
   fs.writeFileSync(
     DATA_FILE,
@@ -44,102 +45,189 @@ function saveIPData() {
 
 loadIPData();
 
+/* ================= HELPERS ================= */
+
+/* Validate IP */
+function isValidIP(ip) {
+  return /^(\d{1,3}\.){3}\d{1,3}$/.test(ip);
+}
+
+/* Generate PLC IP */
+function generatePlcIp(ip) {
+  try {
+    const parts = ip.split(".");
+    if (parts.length !== 4) return null;
+
+    const last = parseInt(parts[3]);
+    if (isNaN(last) || last <= 0) return null;
+
+    parts[3] = last - 1;
+    return parts.join(".");
+  } catch {
+    return null;
+  }
+}
+
 /* ================= ROUTES ================= */
 
-/* ---- Ping Status ---- */
+/* ---------- PING ---------- */
 app.get("/ping", async (req, res) => {
   try {
     const results = await Promise.all(
-      ipData.map(async (entry) => {
+      ipData.map(async (t) => {
+        let ipAlive = false;
+        let plcAlive = false;
+
         try {
-          const r = await ping.promise.probe(entry.ip, { timeout: 2 });
-          return { ...entry, status: r.alive ? "Connected" : "Disconnected" };
-        } catch {
-          return { ...entry, status: "Disconnected" };
-        }
+          if (t.ip) {
+            const ipPing = await ping.promise.probe(t.ip, { timeout: 2 });
+            ipAlive = ipPing.alive;
+          }
+        } catch {}
+
+        try {
+          if (t.plcIp) {
+            const plcPing = await ping.promise.probe(t.plcIp, { timeout: 2 });
+            plcAlive = plcPing.alive;
+          }
+        } catch {}
+
+        return {
+          ...t,
+          ipStatus: ipAlive ? "Connected" : "Disconnected",
+          plcStatus: t.plcIp
+            ? plcAlive ? "Connected" : "Disconnected"
+            : "Missing"
+        };
       })
     );
+
     res.json(results);
-  } catch {
+  } catch (err) {
+    console.error("Ping error:", err);
     res.status(500).json({ error: "Ping failed" });
   }
 });
 
-/* ---- Add IP ---- */
+/* ---------- ADD ---------- */
 app.post("/add-ip", (req, res) => {
-  const { name, ip, turbineType, turbineLocation } = req.body;
+  let { name, ip, plcIp, turbineType, turbineLocation } = req.body;
 
   if (!name || !ip || !turbineType || !turbineLocation) {
-    return res.status(400).json({ message: "All fields required" });
+    return res.status(400).json({ message: "Required fields missing" });
   }
 
-  if (ipData.some(e => e.ip === ip)) {
-    return res.status(400).json({ message: "IP already exists" });
+  if (!isValidIP(ip)) {
+    return res.status(400).json({ message: "Invalid SCADA IP" });
   }
 
-  ipData.push({ name, ip, turbineType, turbineLocation });
+  if (!plcIp) {
+    plcIp = generatePlcIp(ip);
+  }
+
+  if (plcIp && !isValidIP(plcIp)) {
+    return res.status(400).json({ message: "Invalid PLC IP" });
+  }
+
+  if (ipData.some(e => e.ip === ip || e.plcIp === plcIp)) {
+    return res.status(400).json({ message: "Duplicate IP/PLC exists" });
+  }
+
+  ipData.push({
+    name,
+    ip,
+    plcIp,
+    turbineType,
+    turbineLocation
+  });
+
   saveIPData();
-  res.status(201).json({ message: "IP added" });
+  res.status(201).json({ message: "Turbine added" });
 });
 
-/* ---- Edit IP ---- */
+/* ---------- EDIT ---------- */
 app.put("/edit-ip", (req, res) => {
-  const { oldIp, name, ip, turbineType, turbineLocation } = req.body;
+  const { oldIp, name, ip, plcIp, turbineType, turbineLocation } = req.body;
 
   const index = ipData.findIndex(e => e.ip === oldIp);
   if (index === -1) {
     return res.status(404).json({ message: "IP not found" });
   }
 
-  ipData[index] = { name, ip, turbineType, turbineLocation };
+  // Prevent duplicate when editing
+  const duplicate = ipData.some(
+    (e, i) =>
+      i !== index &&
+      (e.ip === ip || (plcIp && e.plcIp === plcIp))
+  );
+
+  if (duplicate) {
+    return res.status(400).json({ message: "Duplicate IP/PLC exists" });
+  }
+
+  ipData[index] = {
+    ...ipData[index],
+    name,
+    ip,
+    plcIp: plcIp || ipData[index].plcIp,
+    turbineType,
+    turbineLocation
+  };
+
   saveIPData();
-  res.json({ message: "IP updated" });
+  res.json({ message: "Updated" });
 });
 
-/* ---- Delete IP (Soft) ---- */
+/* ---------- DELETE ---------- */
 app.delete("/delete-ip/:ip", (req, res) => {
   const index = ipData.findIndex(e => e.ip === req.params.ip);
+
   if (index === -1) {
     return res.status(404).json({ message: "IP not found" });
   }
 
   deletedIPs.push(ipData[index]);
   ipData.splice(index, 1);
+
   saveIPData();
-  res.json({ message: "IP deleted" });
+  res.json({ message: "Deleted" });
 });
 
-/* ---- Deleted IPs ---- */
+/* ---------- DELETED ---------- */
 app.get("/deleted-ips", (req, res) => {
   res.json(deletedIPs);
 });
 
-/* ---- Restore IP ---- */
+/* ---------- RESTORE ---------- */
 app.post("/restore-ip/:ip", (req, res) => {
   const index = deletedIPs.findIndex(e => e.ip === req.params.ip);
+
   if (index === -1) {
-    return res.status(404).json({ message: "Deleted IP not found" });
+    return res.status(404).json({ message: "Not found" });
   }
 
   ipData.push(deletedIPs[index]);
   deletedIPs.splice(index, 1);
+
   saveIPData();
-  res.json({ message: "IP restored" });
+  res.json({ message: "Restored" });
 });
 
-/* ---- Permanent Delete ---- */
+/* ---------- PERMANENT DELETE ---------- */
 app.delete("/permanently-delete-ip/:ip", (req, res) => {
   const index = deletedIPs.findIndex(e => e.ip === req.params.ip);
+
   if (index === -1) {
-    return res.status(404).json({ message: "IP not found" });
+    return res.status(404).json({ message: "Not found" });
   }
 
   deletedIPs.splice(index, 1);
   saveIPData();
-  res.json({ message: "IP permanently deleted" });
+
+  res.json({ message: "Removed permanently" });
 });
 
-/* ---- BULK UPLOAD (FIXED) ---- */
+/* ---------- BULK UPLOAD ---------- */
 app.post("/bulk-add", upload.single("file"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
@@ -150,28 +238,28 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     const rows = xlsx.utils.sheet_to_json(sheet, { defval: "" });
 
-    let added = 0;
-    let duplicates = 0;
-    let skipped = 0;
+    let added = 0, duplicates = 0, skipped = 0;
 
     rows.forEach(row => {
-      // 🔥 Normalize keys (trim spaces)
-      const normalizedRow = {};
-      Object.keys(row).forEach(k => {
-        normalizedRow[k.trim()] = row[k];
-      });
+      const r = {};
+      Object.keys(row).forEach(k => r[k.trim()] = row[k]);
 
-      const name = normalizedRow["Name"];
-      const ip = normalizedRow["IP"];
-      const turbineType = normalizedRow["Turbine Type"];
-      const turbineLocation = normalizedRow["Turbine Location"];
+      const name = r["Name"];
+      const ip = r["IP"];
+      let plcIp = r["PLC IP"];
+      const turbineType = r["Turbine Type"];
+      const turbineLocation = r["Turbine Location"];
 
       if (!name || !ip || !turbineType || !turbineLocation) {
         skipped++;
         return;
       }
 
-      if (ipData.some(e => e.ip === ip)) {
+      if (!plcIp) {
+        plcIp = generatePlcIp(ip);
+      }
+
+      if (ipData.some(e => e.ip === ip || e.plcIp === plcIp)) {
         duplicates++;
         return;
       }
@@ -179,6 +267,7 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
       ipData.push({
         name: String(name).trim(),
         ip: String(ip).trim(),
+        plcIp: plcIp ? String(plcIp).trim() : null,
         turbineType: String(turbineType).trim(),
         turbineLocation: String(turbineLocation).trim()
       });
@@ -189,20 +278,16 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
     saveIPData();
     fs.unlinkSync(req.file.path);
 
-    res.json({
-      message: "Bulk upload completed",
-      added,
-      duplicates,
-      skipped
-    });
+    res.json({ added, duplicates, skipped });
+
   } catch (err) {
+    fs.unlinkSync(req.file.path); // 🔥 important fix
     console.error("Bulk upload error:", err);
     res.status(500).json({ error: "Bulk upload failed" });
   }
 });
 
-
-/* ---- Export XLSX ---- */
+/* ---------- EXPORT ---------- */
 app.get("/export-turbines", (req, res) => {
   const wb = xlsx.utils.book_new();
   const ws = xlsx.utils.json_to_sheet(ipData);
@@ -214,12 +299,12 @@ app.get("/export-turbines", (req, res) => {
   res.download(fileName, () => fs.unlinkSync(fileName));
 });
 
-/* ================= SPA FALLBACK ================= */
+/* ---------- SPA ---------- */
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
-/* ================= START ================= */
+/* ---------- START ---------- */
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running: http://localhost:${PORT}`);
 });

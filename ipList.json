@@ -1,1531 +1,1531 @@
 {
   "ipList": [
     {
-      "name": "GAL04",
-      "ip": "192.168.10.9",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL05",
-      "ip": "192.168.10.10",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL06",
-      "ip": "192.168.10.11",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL07",
-      "ip": "192.168.10.12",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL08",
-      "ip": "192.168.10.13",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL12",
-      "ip": "192.168.10.5",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL10",
-      "ip": "192.168.10.86",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL18",
-      "ip": "192.168.10.18",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL22",
-      "ip": "192.168.10.20",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL27",
-      "ip": "192.168.10.106",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL14",
-      "ip": "192.168.10.4",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL19",
-      "ip": "192.168.10.19",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-23",
-      "ip": "192.168.12.1",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-24",
-      "ip": "192.168.12.2",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-25",
-      "ip": "192.168.12.3",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MANJU-19",
-      "ip": "192.168.12.4",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GSN-25",
-      "ip": "192.168.12.66",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "Space Textiles-2",
-      "ip": "192.168.11.210",
-      "turbineType": "G97",
-      "turbineLocation": "Kayathar",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND01",
-      "ip": "192.168.13.83",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND02",
-      "ip": "192.168.13.84",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND05",
-      "ip": "192.168.13.87",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND06",
-      "ip": "192.168.13.88",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD01",
-      "ip": "192.168.13.71",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD02",
-      "ip": "192.168.13.72",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD03",
-      "ip": "192.168.13.73",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD04",
-      "ip": "192.168.13.74",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD06",
-      "ip": "192.168.13.76",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD07",
-      "ip": "192.168.13.77",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD08",
-      "ip": "192.168.13.78",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD10",
-      "ip": "192.168.13.80",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD11",
-      "ip": "192.168.13.81",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD12",
-      "ip": "192.168.13.82",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL17",
-      "ip": "192.168.13.1",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 10",
-      "ip": "192.168.13.2",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 26",
-      "ip": "192.168.13.154",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 09",
-      "ip": "192.168.13.7",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 02",
-      "ip": "192.168.13.146",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 50",
-      "ip": "192.168.13.68",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 51",
-      "ip": "192.168.13.130",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 52",
-      "ip": "192.168.13.138",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL01",
-      "ip": "192.168.10.66",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL02",
-      "ip": "192.168.10.67",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL03",
-      "ip": "192.168.10.8",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL13",
-      "ip": "192.168.10.17",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL24",
-      "ip": "192.168.10.22",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL26",
-      "ip": "192.168.10.107",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL23",
-      "ip": "192.168.10.21",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GSN-26",
-      "ip": "192.168.12.68",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "VNH",
-      "ip": "192.168.11.218",
-      "turbineType": "G58",
-      "turbineLocation": "MH-JATH",
-      "status": "Disconnected"
-    },
-    {
-      "name": "Space Textiles-1",
-      "ip": "192.168.11.202",
-      "turbineType": "G97",
-      "turbineLocation": "Kayathar",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND03",
-      "ip": "192.168.13.85",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND04",
-      "ip": "192.168.13.86",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD05",
-      "ip": "192.168.13.75",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD09",
-      "ip": "192.168.13.79",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 13",
-      "ip": "192.168.13.3",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 41",
-      "ip": "192.168.13.162",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 05",
-      "ip": "192.168.13.6",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
       "name": "AGT01",
       "ip": "192.168.5.42",
-      "turbineType": "G59",
+      "plcIp": "192.168.5.41",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "AMF-849",
       "ip": "192.168.18.42",
-      "turbineType": "G60",
+      "plcIp": "192.168.18.41",
+      "turbineType": "2000",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "AMM-251",
       "ip": "192.168.7.210",
-      "turbineType": "G61",
+      "plcIp": "192.168.7.209",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "AMM-275",
       "ip": "192.168.3.82",
-      "turbineType": "G62",
+      "plcIp": "192.168.3.81",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "AMP-560",
       "ip": "192.168.7.26",
-      "turbineType": "G63",
+      "plcIp": "192.168.7.25",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "ARVI01",
       "ip": "192.168.5.124",
-      "turbineType": "G64",
+      "plcIp": "192.168.5.123",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ATLA01",
       "ip": "192.168.5.50",
-      "turbineType": "G65",
+      "plcIp": "192.168.5.49",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ATLAS",
       "ip": "192.168.11.106",
-      "turbineType": "G66",
+      "plcIp": "192.168.11.105",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "AVN 01",
       "ip": "192.168.9.114",
-      "turbineType": "G67",
+      "plcIp": "192.168.9.113",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "AVN 02",
       "ip": "192.168.9.122",
-      "turbineType": "G68",
+      "plcIp": "192.168.9.121",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "AVN 03",
       "ip": "192.168.9.130",
-      "turbineType": "G69",
+      "plcIp": "192.168.9.129",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "AVN 04",
       "ip": "192.168.9.138",
-      "turbineType": "G70",
+      "plcIp": "192.168.9.137",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "AVN05",
       "ip": "192.168.5.178",
-      "turbineType": "G71",
+      "plcIp": "192.168.5.177",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "BAMM 01",
       "ip": "192.168.9.146",
-      "turbineType": "G72",
+      "plcIp": "192.168.9.145",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "BANS-547",
       "ip": "192.168.22.58",
-      "turbineType": "G73",
+      "plcIp": "192.168.22.57",
+      "turbineType": "2000",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "BANS-865",
       "ip": "192.168.22.50",
-      "turbineType": "G74",
+      "plcIp": "192.168.22.49",
+      "turbineType": "2000",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "BPM-595",
       "ip": "192.168.7.147",
-      "turbineType": "G75",
+      "plcIp": "192.168.7.146",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "CHAM01",
       "ip": "192.168.5.2",
-      "turbineType": "G76",
+      "plcIp": "192.168.5.1",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "CHER01",
       "ip": "192.168.5.26",
-      "turbineType": "G77",
+      "plcIp": "192.168.5.25",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "CHER02",
       "ip": "192.168.5.34",
-      "turbineType": "G78",
+      "plcIp": "192.168.5.33",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "CYP-25",
       "ip": "192.168.7.58",
-      "turbineType": "G79",
+      "plcIp": "192.168.7.57",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "CYP-785",
       "ip": "192.168.7.34",
-      "turbineType": "G80",
+      "plcIp": "192.168.7.33",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "DOL-19",
       "ip": "192.168.3.106",
-      "turbineType": "G81",
+      "plcIp": "192.168.3.105",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "DR",
       "ip": "192.168.11.114",
-      "turbineType": "G82",
+      "plcIp": "192.168.11.113",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "Dr-100G",
       "ip": "192.168.11.34",
-      "turbineType": "G83",
+      "plcIp": "192.168.11.33",
+      "turbineType": "2000",
       "turbineLocation": "Kayathar"
     },
     {
       "name": "Dr-73",
       "ip": "192.168.11.2",
-      "turbineType": "G84",
+      "plcIp": "192.168.11.1",
+      "turbineType": "2000",
       "turbineLocation": "Kayathar"
     },
     {
       "name": "DSM-529",
       "ip": "192.168.18.26",
-      "turbineType": "G85",
+      "plcIp": "192.168.18.25",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "ERDY01",
       "ip": "192.168.5.90",
-      "turbineType": "G86",
+      "plcIp": "192.168.5.89",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ERDY02",
       "ip": "192.168.5.98",
-      "turbineType": "G87",
+      "plcIp": "192.168.5.97",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ERDY03",
       "ip": "192.168.5.106",
-      "turbineType": "G88",
+      "plcIp": "192.168.5.105",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ERDY04",
       "ip": "192.168.5.114",
-      "turbineType": "G89",
+      "plcIp": "192.168.5.113",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ERDY05",
       "ip": "192.168.5.122",
-      "turbineType": "G90",
+      "plcIp": "192.168.5.121",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "ESM-1019",
       "ip": "192.168.7.178",
-      "turbineType": "G91",
+      "plcIp": "192.168.7.177",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "ESM-1023",
       "ip": "192.168.7.179",
-      "turbineType": "G92",
+      "plcIp": "192.168.7.178",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "ESM-1078",
       "ip": "192.168.7.162",
-      "turbineType": "G93",
+      "plcIp": "192.168.7.161",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "ESM-244",
       "ip": "192.168.7.194",
-      "turbineType": "G94",
+      "plcIp": "192.168.7.193",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "ESM-523",
       "ip": "192.168.7.186",
-      "turbineType": "G95",
+      "plcIp": "192.168.7.185",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "EVER-1397",
       "ip": "192.168.4.154",
-      "turbineType": "G96",
+      "plcIp": "192.168.4.153",
+      "turbineType": "2000",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "EVER-264",
       "ip": "192.168.6.82",
-      "turbineType": "G97",
+      "plcIp": "192.168.6.81",
+      "turbineType": "850",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "EVER-269",
       "ip": "192.168.6.90",
-      "turbineType": "G98",
+      "plcIp": "192.168.6.89",
+      "turbineType": "850",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "EVER-275",
       "ip": "192.168.6.93",
-      "turbineType": "G99",
+      "plcIp": "192.168.6.92",
+      "turbineType": "850",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "EVER-316",
       "ip": "192.168.6.86",
-      "turbineType": "G100",
+      "plcIp": "192.168.6.85",
+      "turbineType": "850",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "EVER-468",
       "ip": "192.168.5.82",
-      "turbineType": "G101",
+      "plcIp": "192.168.5.81",
+      "turbineType": "2000",
       "turbineLocation": "Tenkasi"
     },
     {
       "name": "FAB-201",
       "ip": "192.168.7.202",
-      "turbineType": "G102",
+      "plcIp": "192.168.7.201",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "FSM-1225",
       "ip": "192.168.7.66",
-      "turbineType": "G103",
+      "plcIp": "192.168.7.65",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "GAL-01",
+      "ip": "192.168.10.66",
+      "plcIp": "192.168.10.65",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-02",
+      "ip": "192.168.10.67",
+      "plcIp": "192.168.10.66",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-03",
+      "ip": "192.168.10.8",
+      "plcIp": "192.168.10.7",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-04",
+      "ip": "192.168.10.9",
+      "plcIp": "192.168.10.8",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-05",
+      "ip": "192.168.10.10",
+      "plcIp": "192.168.10.9",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-06",
+      "ip": "192.168.10.11",
+      "plcIp": "192.168.10.10",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-07",
+      "ip": "192.168.10.12",
+      "plcIp": "192.168.10.11",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
     },
     {
       "name": "GAL-08",
       "ip": "192.168.10.122",
-      "turbineType": "G111",
+      "plcIp": "192.168.10.121",
+      "turbineType": "850",
       "turbineLocation": "Bendawadi"
     },
     {
       "name": "GAL-09",
       "ip": "192.168.10.114",
-      "turbineType": "G112",
+      "plcIp": "192.168.10.113",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-10",
+      "ip": "192.168.10.86",
+      "plcIp": "192.168.10.85",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-12",
+      "ip": "192.168.10.5",
+      "plcIp": "192.168.10.4",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-13",
+      "ip": "192.168.10.17",
+      "plcIp": "192.168.10.16",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-14",
+      "ip": "192.168.10.4",
+      "plcIp": "192.168.10.3",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-18",
+      "ip": "192.168.10.18",
+      "plcIp": "192.168.10.17",
+      "turbineType": "850",
       "turbineLocation": "Bendawadi"
     },
     {
       "name": "GAL-19",
       "ip": "192.168.10.123",
-      "turbineType": "G118",
+      "plcIp": "192.168.10.122",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-22",
+      "ip": "192.168.10.20",
+      "plcIp": "192.168.10.19",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-23",
+      "ip": "192.168.10.21",
+      "plcIp": "192.168.10.20",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-24",
+      "ip": "192.168.10.22",
+      "plcIp": "192.168.10.21",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-26",
+      "ip": "192.168.10.107",
+      "plcIp": "192.168.10.106",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-27",
+      "ip": "192.168.10.106",
+      "plcIp": "192.168.10.105",
+      "turbineType": "850",
       "turbineLocation": "Bendawadi"
     },
     {
       "name": "GAL-29",
       "ip": "192.168.10.242",
-      "turbineType": "G124",
+      "plcIp": "192.168.10.241",
+      "turbineType": "850",
       "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GBR-117",
+      "ip": "192.168.16.2",
+      "plcIp": "192.168.16.1",
+      "turbineType": "2000",
+      "turbineLocation": "Babalishwar"
     },
     {
       "name": "GRN-138",
       "ip": "192.168.17.42",
-      "turbineType": "G126",
+      "plcIp": "192.168.17.41",
+      "turbineType": "2000",
       "turbineLocation": "RON"
     },
     {
       "name": "GRN-153",
       "ip": "192.168.17.2",
-      "turbineType": "G127",
+      "plcIp": "192.168.17.1",
+      "turbineType": "2000",
       "turbineLocation": "RON"
     },
     {
       "name": "GRN-154",
       "ip": "192.168.17.34",
-      "turbineType": "G128",
+      "plcIp": "192.168.17.33",
+      "turbineType": "2000",
       "turbineLocation": "RON"
     },
     {
       "name": "GRN-197",
       "ip": "192.168.17.26",
-      "turbineType": "G129",
+      "plcIp": "192.168.17.25",
+      "turbineType": "2000",
       "turbineLocation": "RON"
     },
     {
       "name": "GRN-229",
       "ip": "192.168.17.18",
-      "turbineType": "G130",
+      "plcIp": "192.168.17.17",
+      "turbineType": "2000",
       "turbineLocation": "RON"
+    },
+    {
+      "name": "GSN-25",
+      "ip": "192.168.12.66",
+      "plcIp": "192.168.12.65",
+      "turbineType": "850",
+      "turbineLocation": "Chikkodi"
+    },
+    {
+      "name": "GSN-26",
+      "ip": "192.168.12.68",
+      "plcIp": "192.168.12.67",
+      "turbineType": "850",
+      "turbineLocation": "Chikkodi"
     },
     {
       "name": "HIMA01",
       "ip": "192.168.5.10",
-      "turbineType": "G133",
+      "plcIp": "192.168.5.9",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "HUDH01",
       "ip": "192.168.5.18",
-      "turbineType": "G134",
+      "plcIp": "192.168.5.17",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "INDEX",
       "ip": "192.168.9.66",
-      "turbineType": "G135",
+      "plcIp": "192.168.9.65",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "JAY-394",
       "ip": "192.168.18.2",
-      "turbineType": "G136",
+      "plcIp": "192.168.18.1",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "JK01",
       "ip": "192.168.1.26",
-      "turbineType": "G137",
+      "plcIp": "192.168.1.25",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "JK02",
       "ip": "192.168.1.34",
-      "turbineType": "G138",
+      "plcIp": "192.168.1.33",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "JKC-494",
       "ip": "192.168.3.90",
-      "turbineType": "G139",
+      "plcIp": "192.168.3.89",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "JKC-97",
       "ip": "192.168.3.114",
-      "turbineType": "G140",
+      "plcIp": "192.168.3.113",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "KAMAL",
       "ip": "192.168.11.122",
-      "turbineType": "G141",
+      "plcIp": "192.168.11.121",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "KPN-609",
       "ip": "192.168.18.18",
-      "turbineType": "G142",
+      "plcIp": "192.168.18.17",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "KPR 01",
       "ip": "192.168.5.186",
-      "turbineType": "G143",
+      "plcIp": "192.168.5.185",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 02",
       "ip": "192.168.5.194",
-      "turbineType": "G144",
+      "plcIp": "192.168.5.193",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 03",
       "ip": "192.168.5.202",
-      "turbineType": "G145",
+      "plcIp": "192.168.5.201",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 04",
       "ip": "192.168.5.210",
-      "turbineType": "G146",
+      "plcIp": "192.168.5.209",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 05",
       "ip": "192.168.5.218",
-      "turbineType": "G147",
+      "plcIp": "192.168.5.217",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 06",
       "ip": "192.168.5.226",
-      "turbineType": "G148",
+      "plcIp": "192.168.5.225",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 07",
       "ip": "192.168.5.234",
-      "turbineType": "G149",
+      "plcIp": "192.168.5.233",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 08",
       "ip": "192.168.5.242",
-      "turbineType": "G150",
+      "plcIp": "192.168.5.241",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 09",
       "ip": "192.168.5.250",
-      "turbineType": "G151",
+      "plcIp": "192.168.5.249",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 10",
       "ip": "192.168.9.2",
-      "turbineType": "G152",
+      "plcIp": "192.168.9.1",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 11",
       "ip": "192.168.9.10",
-      "turbineType": "G153",
+      "plcIp": "192.168.9.9",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 12",
       "ip": "192.168.9.18",
-      "turbineType": "G154",
+      "plcIp": "192.168.9.17",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 13",
       "ip": "192.168.9.26",
-      "turbineType": "G155",
+      "plcIp": "192.168.9.25",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 14",
       "ip": "192.168.9.34",
-      "turbineType": "G156",
+      "plcIp": "192.168.9.33",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 15",
       "ip": "192.168.9.42",
-      "turbineType": "G157",
+      "plcIp": "192.168.9.41",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 16",
       "ip": "192.168.9.50",
-      "turbineType": "G158",
+      "plcIp": "192.168.9.49",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 19",
       "ip": "192.168.5.125",
-      "turbineType": "G159",
+      "plcIp": "192.168.5.124",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 20",
       "ip": "192.168.5.180",
-      "turbineType": "G160",
+      "plcIp": "192.168.5.179",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 21",
       "ip": "192.168.5.179",
-      "turbineType": "G161",
+      "plcIp": "192.168.5.178",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 22",
       "ip": "192.168.5.181",
-      "turbineType": "G162",
+      "plcIp": "192.168.5.180",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 23",
       "ip": "192.168.9.90",
-      "turbineType": "G163",
+      "plcIp": "192.168.9.89",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 24",
       "ip": "192.168.9.98",
-      "turbineType": "G164",
+      "plcIp": "192.168.9.97",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR 25",
       "ip": "192.168.9.106",
-      "turbineType": "G165",
+      "plcIp": "192.168.9.105",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR17",
       "ip": "192.168.5.170",
-      "turbineType": "G166",
+      "plcIp": "192.168.5.169",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR18",
       "ip": "192.168.5.162",
-      "turbineType": "G167",
+      "plcIp": "192.168.5.161",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KPR26",
       "ip": "192.168.9.162",
-      "turbineType": "G168",
+      "plcIp": "192.168.9.161",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KRAJ01",
       "ip": "192.168.9.58",
-      "turbineType": "G169",
+      "plcIp": "192.168.9.57",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KRAJ02",
       "ip": "192.168.9.74",
-      "turbineType": "G170",
+      "plcIp": "192.168.9.73",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "KRV-202",
       "ip": "192.168.11.26",
-      "turbineType": "G171",
+      "plcIp": "192.168.11.25",
+      "turbineType": "2000",
       "turbineLocation": "Kayathar"
     },
     {
       "name": "KRV-57",
       "ip": "192.168.11.18",
-      "turbineType": "G172",
+      "plcIp": "192.168.11.17",
+      "turbineType": "2000",
       "turbineLocation": "Kayathar"
     },
     {
       "name": "KRV-93",
       "ip": "192.168.11.10",
-      "turbineType": "G173",
+      "plcIp": "192.168.11.9",
+      "turbineType": "2000",
       "turbineLocation": "Kayathar"
     },
     {
       "name": "LEC-257",
       "ip": "192.168.7.130",
-      "turbineType": "G174",
+      "plcIp": "192.168.7.129",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "MAH-685",
       "ip": "192.168.18.34",
-      "turbineType": "G175",
+      "plcIp": "192.168.18.33",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "MANJU-19",
+      "ip": "192.168.12.4",
+      "plcIp": "192.168.12.3",
+      "turbineType": "850",
+      "turbineLocation": "Chikkodi"
+    },
+    {
+      "name": "MANJU-23",
+      "ip": "192.168.12.1",
+      "plcIp": "192.168.12.0",
+      "turbineType": "850",
+      "turbineLocation": "Chikkodi"
+    },
+    {
+      "name": "MANJU-24",
+      "ip": "192.168.12.2",
+      "plcIp": "192.168.12.1",
+      "turbineType": "850",
+      "turbineLocation": "Chikkodi"
+    },
+    {
+      "name": "MANJU-25",
+      "ip": "192.168.12.3",
+      "plcIp": "192.168.12.2",
+      "turbineType": "850",
+      "turbineLocation": "Chikkodi"
     },
     {
       "name": "MBS-829",
       "ip": "192.168.7.146",
-      "turbineType": "G180",
+      "plcIp": "192.168.7.145",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "MEHALA",
       "ip": "192.168.1.130",
-      "turbineType": "G181",
+      "plcIp": "192.168.1.129",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "MGL-02",
+      "ip": "192.168.13.146",
+      "plcIp": "192.168.13.145",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-05",
+      "ip": "192.168.13.6",
+      "plcIp": "192.168.13.5",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-09",
+      "ip": "192.168.13.7",
+      "plcIp": "192.168.13.6",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-10",
+      "ip": "192.168.13.2",
+      "plcIp": "192.168.13.1",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-13",
+      "ip": "192.168.13.3",
+      "plcIp": "192.168.13.2",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-17",
+      "ip": "192.168.13.1",
+      "plcIp": "192.168.13.0",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-26",
+      "ip": "192.168.13.154",
+      "plcIp": "192.168.13.153",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-41",
+      "ip": "192.168.13.162",
+      "plcIp": "192.168.13.161",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-50",
+      "ip": "192.168.13.68",
+      "plcIp": "192.168.13.67",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-51",
+      "ip": "192.168.13.130",
+      "plcIp": "192.168.13.129",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "MGL-52",
+      "ip": "192.168.13.138",
+      "plcIp": "192.168.13.137",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
     },
     {
       "name": "MSL-862",
       "ip": "192.168.7.250",
-      "turbineType": "G193",
+      "plcIp": "192.168.7.249",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "NAGA-01",
       "ip": "192.168.9.218",
-      "turbineType": "G194",
+      "plcIp": "192.168.9.217",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "NCH-623",
       "ip": "192.168.3.98",
-      "turbineType": "G195",
+      "plcIp": "192.168.3.97",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ND-01",
+      "ip": "192.168.13.83",
+      "plcIp": "192.168.13.82",
+      "turbineType": "850",
+      "turbineLocation": "LTL-ND"
+    },
+    {
+      "name": "ND-02",
+      "ip": "192.168.13.84",
+      "plcIp": "192.168.13.83",
+      "turbineType": "850",
+      "turbineLocation": "LTL-ND"
+    },
+    {
+      "name": "ND-03",
+      "ip": "192.168.13.85",
+      "plcIp": "192.168.13.84",
+      "turbineType": "850",
+      "turbineLocation": "LTL-ND"
+    },
+    {
+      "name": "ND-04",
+      "ip": "192.168.13.86",
+      "plcIp": "192.168.13.85",
+      "turbineType": "850",
+      "turbineLocation": "LTL-ND"
+    },
+    {
+      "name": "ND-05",
+      "ip": "192.168.13.87",
+      "plcIp": "192.168.13.86",
+      "turbineType": "850",
+      "turbineLocation": "LTL-ND"
+    },
+    {
+      "name": "ND-06",
+      "ip": "192.168.13.88",
+      "plcIp": "192.168.13.87",
+      "turbineType": "850",
+      "turbineLocation": "LTL-ND"
     },
     {
       "name": "NEVA-01",
       "ip": "192.168.9.202",
-      "turbineType": "G202",
+      "plcIp": "192.168.9.201",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "NEVA-02",
       "ip": "192.168.9.210",
-      "turbineType": "G203",
+      "plcIp": "192.168.9.209",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "NGA-1035",
       "ip": "192.168.7.234",
-      "turbineType": "G204",
+      "plcIp": "192.168.7.233",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "PD-01",
+      "ip": "192.168.13.71",
+      "plcIp": "192.168.13.70",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-02",
+      "ip": "192.168.13.72",
+      "plcIp": "192.168.13.71",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-03",
+      "ip": "192.168.13.73",
+      "plcIp": "192.168.13.72",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-04",
+      "ip": "192.168.13.74",
+      "plcIp": "192.168.13.73",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-05",
+      "ip": "192.168.13.75",
+      "plcIp": "192.168.13.74",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-06",
+      "ip": "192.168.13.76",
+      "plcIp": "192.168.13.75",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-07",
+      "ip": "192.168.13.77",
+      "plcIp": "192.168.13.76",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-08",
+      "ip": "192.168.13.78",
+      "plcIp": "192.168.13.77",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-09",
+      "ip": "192.168.13.79",
+      "plcIp": "192.168.13.78",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-10",
+      "ip": "192.168.13.80",
+      "plcIp": "192.168.13.79",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-11",
+      "ip": "192.168.13.81",
+      "plcIp": "192.168.13.80",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
+    },
+    {
+      "name": "PD-12",
+      "ip": "192.168.13.82",
+      "plcIp": "192.168.13.81",
+      "turbineType": "850",
+      "turbineLocation": "LTL-PD"
     },
     {
       "name": "PNT01",
       "ip": "192.168.6.138",
-      "turbineType": "G217",
+      "plcIp": "192.168.6.137",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "PNT02",
       "ip": "192.168.6.146",
-      "turbineType": "G218",
+      "plcIp": "192.168.6.145",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "PSM-150",
       "ip": "192.168.7.114",
-      "turbineType": "G219",
+      "plcIp": "192.168.7.113",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-152",
       "ip": "192.168.7.122",
-      "turbineType": "G220",
+      "plcIp": "192.168.7.121",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-239",
       "ip": "192.168.3.10",
-      "turbineType": "G221",
+      "plcIp": "192.168.3.9",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-254",
       "ip": "192.168.3.18",
-      "turbineType": "G222",
+      "plcIp": "192.168.3.17",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-291",
       "ip": "192.168.3.26",
-      "turbineType": "G223",
+      "plcIp": "192.168.3.25",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-292",
       "ip": "192.168.3.50",
-      "turbineType": "G224",
+      "plcIp": "192.168.3.49",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-294",
       "ip": "192.168.3.34",
-      "turbineType": "G225",
+      "plcIp": "192.168.3.33",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-319",
       "ip": "192.168.7.106",
-      "turbineType": "G226",
+      "plcIp": "192.168.7.105",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-328",
       "ip": "192.168.2.210",
-      "turbineType": "G227",
+      "plcIp": "192.168.2.209",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-413",
       "ip": "192.168.3.42",
-      "turbineType": "G228",
+      "plcIp": "192.168.3.41",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-460",
       "ip": "192.168.2.202",
-      "turbineType": "G229",
+      "plcIp": "192.168.2.201",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-686",
       "ip": "192.168.7.138",
-      "turbineType": "G230",
+      "plcIp": "192.168.7.137",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "PSM-828",
       "ip": "192.168.7.11",
-      "turbineType": "G231",
+      "plcIp": "192.168.7.10",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "RAMV-01",
       "ip": "192.168.9.226",
-      "turbineType": "G232",
+      "plcIp": "192.168.9.225",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "RBA-01",
       "ip": "192.168.9.82",
-      "turbineType": "G233",
+      "plcIp": "192.168.9.81",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "RCM-488",
       "ip": "192.168.18.10",
-      "turbineType": "G234",
+      "plcIp": "192.168.18.9",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "RSM-1302",
       "ip": "192.168.7.226",
-      "turbineType": "G235",
+      "plcIp": "192.168.7.225",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "RSM-659",
       "ip": "192.168.7.242",
-      "turbineType": "G236",
+      "plcIp": "192.168.7.241",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SEETH",
       "ip": "192.168.9.154",
-      "turbineType": "G237",
+      "plcIp": "192.168.9.153",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHC-1039",
       "ip": "192.168.7.218",
-      "turbineType": "G238",
+      "plcIp": "192.168.7.217",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SHIN01",
       "ip": "192.168.5.58",
-      "turbineType": "G239",
+      "plcIp": "192.168.5.57",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHIN02",
       "ip": "192.168.5.66",
-      "turbineType": "G240",
+      "plcIp": "192.168.5.65",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHIN03",
       "ip": "192.168.5.130",
-      "turbineType": "G241",
+      "plcIp": "192.168.5.129",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHIN04",
       "ip": "192.168.5.138",
-      "turbineType": "G242",
+      "plcIp": "192.168.5.137",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHIN05",
       "ip": "192.168.5.74",
-      "turbineType": "G243",
+      "plcIp": "192.168.5.73",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHIN06",
       "ip": "192.168.5.146",
-      "turbineType": "G244",
+      "plcIp": "192.168.5.145",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SHP-929",
       "ip": "192.168.3.74",
-      "turbineType": "G245",
+      "plcIp": "192.168.3.73",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-1093",
       "ip": "192.168.7.50",
-      "turbineType": "G246",
+      "plcIp": "192.168.7.49",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-140",
       "ip": "192.168.2.186",
-      "turbineType": "G247",
+      "plcIp": "192.168.2.185",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-186",
       "ip": "192.168.3.58",
-      "turbineType": "G248",
+      "plcIp": "192.168.3.57",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-187",
       "ip": "192.168.3.66",
-      "turbineType": "G249",
+      "plcIp": "192.168.3.65",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-265",
       "ip": "192.168.7.98",
-      "turbineType": "G250",
+      "plcIp": "192.168.7.97",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-315",
       "ip": "192.168.3.2",
-      "turbineType": "G251",
+      "plcIp": "192.168.3.1",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-372",
       "ip": "192.168.7.10",
-      "turbineType": "G252",
+      "plcIp": "192.168.7.9",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-40",
       "ip": "192.168.2.194",
-      "turbineType": "G253",
+      "plcIp": "192.168.2.193",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-448",
       "ip": "192.168.2.242",
-      "turbineType": "G254",
+      "plcIp": "192.168.2.241",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-449",
       "ip": "192.168.2.250",
-      "turbineType": "G255",
+      "plcIp": "192.168.2.249",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-459",
       "ip": "192.168.2.234",
-      "turbineType": "G256",
+      "plcIp": "192.168.2.233",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-52",
       "ip": "192.168.2.218",
-      "turbineType": "G257",
+      "plcIp": "192.168.2.217",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-547",
       "ip": "192.168.7.20",
-      "turbineType": "G258",
+      "plcIp": "192.168.7.19",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-57",
       "ip": "192.168.2.178",
-      "turbineType": "G259",
+      "plcIp": "192.168.2.177",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-581",
       "ip": "192.168.7.18",
-      "turbineType": "G260",
+      "plcIp": "192.168.7.17",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-662",
       "ip": "192.168.7.82",
-      "turbineType": "G261",
+      "plcIp": "192.168.7.81",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-664",
       "ip": "192.168.7.90",
-      "turbineType": "G262",
+      "plcIp": "192.168.7.89",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-672",
       "ip": "192.168.7.74",
-      "turbineType": "G263",
+      "plcIp": "192.168.7.73",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-68",
       "ip": "192.168.7.2",
-      "turbineType": "G264",
+      "plcIp": "192.168.7.1",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-683",
       "ip": "192.168.7.19",
-      "turbineType": "G265",
+      "plcIp": "192.168.7.18",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-719",
       "ip": "192.168.7.170",
-      "turbineType": "G266",
+      "plcIp": "192.168.7.169",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSM-86",
       "ip": "192.168.2.226",
-      "turbineType": "G267",
+      "plcIp": "192.168.2.225",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SSTE02",
       "ip": "192.168.6.154",
-      "turbineType": "G268",
+      "plcIp": "192.168.6.153",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
     },
     {
       "name": "SSTE03",
       "ip": "192.168.8.6",
-      "turbineType": "G269",
+      "plcIp": "192.168.8.5",
+      "turbineType": "850",
       "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "ST-228",
+      "ip": "192.168.11.210",
+      "plcIp": "192.168.11.209",
+      "turbineType": "2000",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "ST-68K",
+      "ip": "192.168.11.202",
+      "plcIp": "192.168.11.201",
+      "turbineType": "2000",
+      "turbineLocation": "Kayathar"
     },
     {
       "name": "STI-02",
       "ip": "192.168.18.50",
-      "turbineType": "G272",
+      "plcIp": "192.168.18.49",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "STI-1016",
       "ip": "192.168.18.58",
-      "turbineType": "G273",
+      "plcIp": "192.168.18.57",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
     },
     {
       "name": "SVAI01",
       "ip": "192.168.5.123",
-      "turbineType": "G274",
+      "plcIp": "192.168.5.122",
+      "turbineType": "850",
       "turbineLocation": "Theni"
     },
     {
       "name": "SVM-328",
       "ip": "192.168.7.154",
-      "turbineType": "G275",
+      "plcIp": "192.168.7.153",
+      "turbineType": "850",
       "turbineLocation": "Udumalapet"
-    }
-  ],
-  "deletedIPs": [
-    {
-      "name": "GB",
-      "ip": "192.1641tdkfqergb",
-      "turbineType": "padashbxvb",
-      "turbineLocation": "KA-BABALISHWAR",
-      "status": "Disconnected"
-    },
-    {
-      "name": "sdt",
-      "ip": "ydfhgfh",
-      "turbineType": "sdhfdgh",
-      "turbineLocation": "aszhdbdsfh",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GBR 1kugj",
-      "ip": "192.168.16.2fk",
-      "turbineType": "G114fjk",
-      "turbineLocation": "KA-BABA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL01",
-      "ip": "192.168.10.66",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL02",
-      "ip": "192.168.10.67",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL03",
-      "ip": "192.168.10.8",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL13",
-      "ip": "192.168.10.17",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL24",
-      "ip": "192.168.10.22",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL26",
-      "ip": "192.168.10.107",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GAL23",
-      "ip": "192.168.10.21",
-      "turbineType": "G58",
-      "turbineLocation": "MH-BENDAVADI",
-      "status": "Disconnected"
-    },
-    {
-      "name": "Space Textiles-1",
-      "ip": "192.168.11.202",
-      "turbineType": "G97",
-      "turbineLocation": "Kayathar",
-      "status": "Disconnected"
     },
     {
       "name": "VNH",
       "ip": "192.168.11.218",
-      "turbineType": "G58",
-      "turbineLocation": "MH-JATH",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GSN-26",
-      "ip": "192.168.12.68",
-      "turbineType": "G58",
-      "turbineLocation": "KA-Chikkodi",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND03",
-      "ip": "192.168.13.85",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD05",
-      "ip": "192.168.13.75",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 13",
-      "ip": "192.168.13.3",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 41",
-      "ip": "192.168.13.162",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "MGL 05",
-      "ip": "192.168.13.6",
-      "turbineType": "G58",
-      "turbineLocation": "RJ-LUDRWA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "PD09",
-      "ip": "192.168.13.79",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "ND04",
-      "ip": "192.168.13.86",
-      "turbineType": "G58",
-      "turbineLocation": "Sri lanka",
-      "status": "Disconnected"
-    },
-    {
-      "name": "dngkl",
-      "ip": "13.32.123.23",
-      "turbineType": "agadzh",
-      "turbineLocation": "ASGRFDA",
-      "status": "Disconnected"
-    },
-    {
-      "name": "GBR 117",
-      "ip": "192.168.16.2",
-      "turbineType": "b",
-      "turbineLocation": "KA",
-      "status": "Disconnected"
+      "plcIp": "192.168.11.217",
+      "turbineType": "850",
+      "turbineLocation": "Jath"
     }
-  ]
+  ],
+  "deletedIPs": []
 }

@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SCADA – IP Connectivity Monitoring</title>
+  <title>SCADA – IP & PLC Connectivity Monitoring</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
   <h1>SCADA Connectivity Application</h1>
   <nav>
@@ -21,151 +20,204 @@
 <section id="home" class="section">
   <h2>Home – Turbine Connectivity</h2>
 
-  <label for="location-filter">Filter by Turbine Location:</label>
+  <label>Filter by Location:</label>
   <select id="location-filter">
-    <option value="all">All Turbine Locations</option>
+    <option value="all">All</option>
   </select>
 
-  <div id="home-status" class="box-container">
-    Loading turbine status...
-  </div>
+  <div id="home-status" class="box-container"></div>
 </section>
 
 <!-- ================= IP MANAGEMENT ================= -->
 <section id="ip-management" class="section hidden">
   <h2>IP Management</h2>
 
-  <!-- Add IP -->
-  <h3>Add New IP</h3>
+  <h3>Add New Turbine</h3>
   <form id="add-ip-form" class="form-container">
     <input type="text" id="ipName" placeholder="Turbine Name" required />
-    <input type="text" id="ipAddress" placeholder="IP Address" required />
-    <input type="text" id="ipTurbineType" placeholder="Turbine Type" required />
-    <input type="text" id="ipTurbineLocation" placeholder="Turbine Location" required />
-    <button type="submit">Add IP</button>
+    
+    <input type="text" id="ipAddress" placeholder="SCADA IP"
+      required onblur="autoFillPlcIp()" />
+    
+    <input type="text" id="plcIpAddress" placeholder="PLC IP (auto)" />
+    
+    <input type="text" id="ipTurbineType" placeholder="Type" required />
+    <input type="text" id="ipTurbineLocation" placeholder="Location" required />
+    
+    <button type="submit">Add</button>
   </form>
 
-  <!-- Bulk Upload -->
-  <h3>Bulk Upload (Excel)</h3>
+  <h3>Bulk Upload</h3>
   <form id="bulk-upload-form">
     <input type="file" id="bulkFile" accept=".xlsx" required />
     <button type="submit">Upload</button>
   </form>
 
-  <!-- Download -->
   <h3>Download</h3>
-  <button id="download-ip-list">Download IP List (XLSX)</button>
+  <button id="download-ip-list">Download XLSX</button>
 
-  <!-- IP List -->
-  <h3>Active IP List</h3>
-  <div id="ip-list" class="box-container">
-    Loading IP list...
-  </div>
+  <h3>Active Turbines</h3>
+  <div id="ip-list" class="box-container"></div>
 
-  <!-- Deleted IPs -->
-  <h3>Deleted IPs</h3>
-  <div id="deleted-ips" class="box-container">
-    Loading deleted IPs...
-  </div>
+  <h3>Deleted Turbines</h3>
+  <div id="deleted-ips" class="box-container"></div>
 </section>
 
-<!-- ================= SCRIPT ================= -->
 <script>
 const API_BASE_URL = "http://localhost:3000";
 let ipData = [];
 
-/* ---------- Navigation ---------- */
-function showSection(sectionId) {
-  document.querySelectorAll(".section").forEach(sec =>
-    sec.classList.add("hidden")
-  );
-  document.getElementById(sectionId).classList.remove("hidden");
+/* ---------- AUTO PLC ---------- */
+function autoFillPlcIp() {
+  const ip = document.getElementById("ipAddress").value.trim();
+  const parts = ip.split(".");
+  if (parts.length !== 4) return;
+
+  const last = parseInt(parts[3]);
+  if (isNaN(last) || last <= 0) return;
+
+  parts[3] = last - 1;
+  document.getElementById("plcIpAddress").value = parts.join(".");
 }
 
-/* ---------- Load Ping Data ---------- */
+/* ---------- NAV ---------- */
+function showSection(id) {
+  document.querySelectorAll(".section").forEach(s => s.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
+
+/* ---------- LOAD ---------- */
 async function loadPingData() {
-  const res = await fetch(`${API_BASE_URL}/ping`);
-  ipData = await res.json();
+  try {
+    const res = await fetch(`${API_BASE_URL}/ping`);
+    ipData = await res.json();
 
-  renderHome(ipData);
-  renderIPList(ipData);
-  populateLocationFilter(ipData);
+    renderHome(ipData);
+    renderIPList(ipData);
+    populateFilter(ipData);
+  } catch (err) {
+    console.error("Load error:", err);
+  }
 }
 
-/* ---------- Home ---------- */
+/* ---------- HOME ---------- */
 function renderHome(data) {
-  const homeDiv = document.getElementById("home-status");
-  homeDiv.innerHTML = data.map(ip => `
-    <div class="box ${ip.status === "Connected" ? "connected" : "disconnected"}">
-      <p><strong>${ip.name}_${ip.turbineType}</strong></p>
-      <p>${ip.turbineLocation}</p>
-      <p>Status: ${ip.status}</p>
-    </div>
-  `).join("");
+  const div = document.getElementById("home-status");
+
+  const grouped = {};
+
+  data.forEach(t => {
+    if (!grouped[t.turbineLocation]) {
+      grouped[t.turbineLocation] = [];
+    }
+    grouped[t.turbineLocation].push(t);
+  });
+
+  let html = "";
+
+  Object.keys(grouped).sort().forEach(location => {
+    html += `
+      <div class="site-section">   <!-- ✅ FULL WIDTH BLOCK -->
+
+        <div class="site-header">
+          ${location} (${grouped[location].length} Turbines)
+        </div>
+
+        <div class="site-grid">
+          ${grouped[location].map(t => `
+            <div class="box modern-box">
+
+              <div class="status ip ${t.ipStatus==="Connected"?"green":"red"}">
+                IP: ${t.ip}
+              </div>
+
+              <div class="status plc ${t.plcStatus==="Connected"?"green":"red"}">
+                PLC: ${t.plcIp || "N/A"}
+              </div>
+
+              <div class="box-label">
+                <strong>${t.name}_${t.turbineType}</strong>
+              </div>
+
+            </div>
+          `).join("")}
+        </div>
+
+      </div>
+    `;
+  });
+
+  div.innerHTML = html;
 }
-
-/* ---------- Filter ---------- */
-function populateLocationFilter(data) {
+/* ---------- FILTER ---------- */
+function populateFilter(data) {
   const dropdown = document.getElementById("location-filter");
-  const locations = [...new Set(data.map(d => d.turbineLocation))];
+  const locs = [...new Set(data.map(d => d.turbineLocation))];
 
-  dropdown.innerHTML = '<option value="all">All Turbine Locations</option>';
-  locations.forEach(loc => {
+  dropdown.innerHTML = `<option value="all">All</option>`;
+  locs.forEach(l=>{
     const opt = document.createElement("option");
-    opt.value = loc;
-    opt.textContent = loc;
+    opt.value = l;
+    opt.textContent = l;
     dropdown.appendChild(opt);
   });
 }
 
-document.getElementById("location-filter").addEventListener("change", () => {
-  const value = document.getElementById("location-filter").value;
-  const filtered = value === "all"
+document.getElementById("location-filter").addEventListener("change", function () {
+  const val = this.value;
+  const filtered = val === "all"
     ? ipData
-    : ipData.filter(ip => ip.turbineLocation === value);
+    : ipData.filter(t => t.turbineLocation === val);
 
   renderHome(filtered);
 });
 
-/* ---------- IP List ---------- */
+/* ---------- IP LIST ---------- */
 function renderIPList(data) {
   const div = document.getElementById("ip-list");
-  div.innerHTML = data.map(ip => `
+
+  div.innerHTML = data.map(t => `
     <div class="box">
-      <p><strong>Name:</strong> ${ip.name}</p>
-      <p><strong>IP:</strong> ${ip.ip}</p>
-      <p><strong>Type:</strong> ${ip.turbineType}</p>
-      <p><strong>Location:</strong> ${ip.turbineLocation}</p>
-      <button onclick="editIP('${ip.name}','${ip.ip}','${ip.turbineType}','${ip.turbineLocation}')">✏️ Edit</button>
-      <button onclick="deleteIP('${ip.ip}')">🗑️ Delete</button>
+      <p><strong>${t.name}</strong></p>
+      <p>SCADA: ${t.ip}</p>
+      <p>PLC: ${t.plcIp || "N/A"}</p>
+      <p>${t.turbineType} | ${t.turbineLocation}</p>
+
+      <button onclick="editIP('${t.name}','${t.ip}','${t.plcIp || ""}','${t.turbineType}','${t.turbineLocation}')">Edit</button>
+      <button onclick="deleteIP('${t.ip}')">Delete</button>
     </div>
   `).join("");
 }
 
-/* ---------- Deleted IPs ---------- */
+/* ---------- DELETED ---------- */
 async function fetchDeletedIPs() {
-  const res = await fetch(`${API_BASE_URL}/deleted-ips`);
-  const data = await res.json();
+  try {
+    const res = await fetch(`${API_BASE_URL}/deleted-ips`);
+    const data = await res.json();
 
-  document.getElementById("deleted-ips").innerHTML = data.map(ip => `
-    <div class="box">
-      <p>${ip.name}_${ip.turbineType}</p>
-      <p>${ip.ip}</p>
-      <button onclick="restoreIP('${ip.ip}')">♻️ Restore</button>
-      <button onclick="permanentlyDeleteIP('${ip.ip}')">❌ Delete</button>
-    </div>
-  `).join("");
+    document.getElementById("deleted-ips").innerHTML = data.map(t => `
+      <div class="box">
+        <p>${t.name}</p>
+        <p>${t.ip}</p>
+        <button onclick="restoreIP('${t.ip}')">Restore</button>
+        <button onclick="permanentlyDeleteIP('${t.ip}')">Delete</button>
+      </div>
+    `).join("");
+  } catch (err) {
+    console.error("Deleted fetch error:", err);
+  }
 }
 
-/* ---------- Add IP ---------- */
+/* ---------- ADD ---------- */
 document.getElementById("add-ip-form").addEventListener("submit", async e => {
   e.preventDefault();
 
   const payload = {
-    name: ipName.value,
-    ip: ipAddress.value,
-    turbineType: ipTurbineType.value,
-    turbineLocation: ipTurbineLocation.value
+    name: document.getElementById("ipName").value,
+    ip: document.getElementById("ipAddress").value,
+    plcIp: document.getElementById("plcIpAddress").value || null,
+    turbineType: document.getElementById("ipTurbineType").value,
+    turbineLocation: document.getElementById("ipTurbineLocation").value
   };
 
   const res = await fetch(`${API_BASE_URL}/add-ip`, {
@@ -175,49 +227,40 @@ document.getElementById("add-ip-form").addEventListener("submit", async e => {
   });
 
   if (res.ok) {
-    alert("IP added successfully");
+    alert("Added");
     e.target.reset();
     loadPingData();
-  } else {
-    const err = await res.json();
-    alert(err.message);
   }
 });
 
-/* ---------- Bulk Upload ---------- */
+/* ---------- BULK ---------- */
 document.getElementById("bulk-upload-form").addEventListener("submit", async e => {
   e.preventDefault();
 
-  const file = bulkFile.files[0];
   const fd = new FormData();
-  fd.append("file", file);
+  fd.append("file", document.getElementById("bulkFile").files[0]);
 
   const res = await fetch(`${API_BASE_URL}/bulk-add`, {
     method: "POST",
     body: fd
   });
 
-  const result = await res.json();
-  alert(
-    `Bulk Upload Finished
-Added: ${result.added}
-Duplicates: ${result.duplicates}
-Skipped: ${result.skipped}`
-  );
-
+  const r = await res.json();
+  alert(`Added:${r.added} Dup:${r.duplicates} Skip:${r.skipped}`);
   loadPingData();
 });
 
-/* ---------- Download ---------- */
+/* ---------- DOWNLOAD ---------- */
 document.getElementById("download-ip-list").onclick = () => {
-  window.location.href = `${API_BASE_URL}/export-turbines`;
+  window.location = `${API_BASE_URL}/export-turbines`;
 };
 
-/* ---------- Edit / Delete / Restore ---------- */
-async function editIP(name, ip, type, loc) {
+/* ---------- EDIT ---------- */
+async function editIP(name, ip, plcIp, type, loc) {
   const newName = prompt("Name", name);
   const newIp = prompt("IP", ip);
-  const newType = prompt("Turbine Type", type);
+  const newPlc = prompt("PLC", plcIp);
+  const newType = prompt("Type", type);
   const newLoc = prompt("Location", loc);
 
   if (!newName || !newIp) return;
@@ -229,6 +272,7 @@ async function editIP(name, ip, type, loc) {
       oldIp: ip,
       name: newName,
       ip: newIp,
+      plcIp: newPlc,
       turbineType: newType,
       turbineLocation: newLoc
     })
@@ -237,20 +281,21 @@ async function editIP(name, ip, type, loc) {
   loadPingData();
 }
 
-async function deleteIP(ip) {
-  await fetch(`${API_BASE_URL}/delete-ip/${ip}`, { method: "DELETE" });
+/* ---------- DELETE ---------- */
+async function deleteIP(ip){
+  await fetch(`${API_BASE_URL}/delete-ip/${ip}`,{method:"DELETE"});
   loadPingData();
   fetchDeletedIPs();
 }
 
-async function restoreIP(ip) {
-  await fetch(`${API_BASE_URL}/restore-ip/${ip}`, { method: "POST" });
+async function restoreIP(ip){
+  await fetch(`${API_BASE_URL}/restore-ip/${ip}`,{method:"POST"});
   loadPingData();
   fetchDeletedIPs();
 }
 
-async function permanentlyDeleteIP(ip) {
-  await fetch(`${API_BASE_URL}/permanently-delete-ip/${ip}`, { method: "DELETE" });
+async function permanentlyDeleteIP(ip){
+  await fetch(`${API_BASE_URL}/permanently-delete-ip/${ip}`,{method:"DELETE"});
   fetchDeletedIPs();
 }
 
