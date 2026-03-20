@@ -1,55 +1,6 @@
 {
   "ipList": [
     {
-      "name": "AGT01",
-      "ip": "192.168.5.42",
-      "plcIp": "192.168.5.41",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "AMF-849",
-      "ip": "192.168.18.42",
-      "plcIp": "192.168.18.41",
-      "turbineType": "2000",
-      "turbineLocation": "Udumalapet"
-    },
-    {
-      "name": "AMM-251",
-      "ip": "192.168.7.210",
-      "plcIp": "192.168.7.209",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
-    },
-    {
-      "name": "AMM-275",
-      "ip": "192.168.3.82",
-      "plcIp": "192.168.3.81",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
-    },
-    {
-      "name": "AMP-560",
-      "ip": "192.168.7.26",
-      "plcIp": "192.168.7.25",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
-    },
-    {
-      "name": "ARVI01",
-      "ip": "192.168.5.124",
-      "plcIp": "192.168.5.123",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "ATLA01",
-      "ip": "192.168.5.50",
-      "plcIp": "192.168.5.49",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
       "name": "ATLAS",
       "ip": "192.168.11.106",
       "plcIp": "192.168.11.105",
@@ -197,13 +148,6 @@
       "turbineLocation": "Theni"
     },
     {
-      "name": "ERDY02",
-      "ip": "192.168.5.98",
-      "plcIp": "192.168.5.97",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
       "name": "ERDY03",
       "ip": "192.168.5.106",
       "plcIp": "192.168.5.105",
@@ -274,20 +218,6 @@
       "turbineLocation": "Tenkasi"
     },
     {
-      "name": "EVER-269",
-      "ip": "192.168.6.90",
-      "plcIp": "192.168.6.89",
-      "turbineType": "850",
-      "turbineLocation": "Tenkasi"
-    },
-    {
-      "name": "EVER-275",
-      "ip": "192.168.6.93",
-      "plcIp": "192.168.6.92",
-      "turbineType": "850",
-      "turbineLocation": "Tenkasi"
-    },
-    {
       "name": "EVER-316",
       "ip": "192.168.6.86",
       "plcIp": "192.168.6.85",
@@ -323,30 +253,9 @@
       "turbineLocation": "Bendawadi"
     },
     {
-      "name": "GAL-02",
-      "ip": "192.168.10.67",
-      "plcIp": "192.168.10.66",
-      "turbineType": "850",
-      "turbineLocation": "Bendawadi"
-    },
-    {
-      "name": "GAL-03",
-      "ip": "192.168.10.8",
-      "plcIp": "192.168.10.7",
-      "turbineType": "850",
-      "turbineLocation": "Bendawadi"
-    },
-    {
       "name": "GAL-04",
       "ip": "192.168.10.9",
       "plcIp": "192.168.10.8",
-      "turbineType": "850",
-      "turbineLocation": "Bendawadi"
-    },
-    {
-      "name": "GAL-05",
-      "ip": "192.168.10.10",
-      "plcIp": "192.168.10.9",
       "turbineType": "850",
       "turbineLocation": "Bendawadi"
     },
@@ -554,41 +463,6 @@
       "turbineLocation": "Panagudi"
     },
     {
-      "name": "JK02",
-      "ip": "192.168.1.34",
-      "plcIp": "192.168.1.33",
-      "turbineType": "850",
-      "turbineLocation": "Panagudi"
-    },
-    {
-      "name": "JKC-494",
-      "ip": "192.168.3.90",
-      "plcIp": "192.168.3.89",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
-    },
-    {
-      "name": "JKC-97",
-      "ip": "192.168.3.114",
-      "plcIp": "192.168.3.113",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
-    },
-    {
-      "name": "KAMAL",
-      "ip": "192.168.11.122",
-      "plcIp": "192.168.11.121",
-      "turbineType": "850",
-      "turbineLocation": "Panagudi"
-    },
-    {
-      "name": "KPN-609",
-      "ip": "192.168.18.18",
-      "plcIp": "192.168.18.17",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
-    },
-    {
       "name": "KPR 01",
       "ip": "192.168.5.186",
       "plcIp": "192.168.5.185",
@@ -613,20 +487,6 @@
       "name": "KPR 04",
       "ip": "192.168.5.210",
       "plcIp": "192.168.5.209",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 05",
-      "ip": "192.168.5.218",
-      "plcIp": "192.168.5.217",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 06",
-      "ip": "192.168.5.226",
-      "plcIp": "192.168.5.225",
       "turbineType": "850",
       "turbineLocation": "Theni"
     },
@@ -666,55 +526,6 @@
       "turbineLocation": "Theni"
     },
     {
-      "name": "KPR 12",
-      "ip": "192.168.9.18",
-      "plcIp": "192.168.9.17",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 13",
-      "ip": "192.168.9.26",
-      "plcIp": "192.168.9.25",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 14",
-      "ip": "192.168.9.34",
-      "plcIp": "192.168.9.33",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 15",
-      "ip": "192.168.9.42",
-      "plcIp": "192.168.9.41",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 16",
-      "ip": "192.168.9.50",
-      "plcIp": "192.168.9.49",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 19",
-      "ip": "192.168.5.125",
-      "plcIp": "192.168.5.124",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 20",
-      "ip": "192.168.5.180",
-      "plcIp": "192.168.5.179",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
       "name": "KPR 21",
       "ip": "192.168.5.179",
       "plcIp": "192.168.5.178",
@@ -729,20 +540,6 @@
       "turbineLocation": "Theni"
     },
     {
-      "name": "KPR 23",
-      "ip": "192.168.9.90",
-      "plcIp": "192.168.9.89",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR 24",
-      "ip": "192.168.9.98",
-      "plcIp": "192.168.9.97",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
       "name": "KPR 25",
       "ip": "192.168.9.106",
       "plcIp": "192.168.9.105",
@@ -750,30 +547,9 @@
       "turbineLocation": "Theni"
     },
     {
-      "name": "KPR17",
-      "ip": "192.168.5.170",
-      "plcIp": "192.168.5.169",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
       "name": "KPR18",
       "ip": "192.168.5.162",
       "plcIp": "192.168.5.161",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KPR26",
-      "ip": "192.168.9.162",
-      "plcIp": "192.168.9.161",
-      "turbineType": "850",
-      "turbineLocation": "Theni"
-    },
-    {
-      "name": "KRAJ01",
-      "ip": "192.168.9.58",
-      "plcIp": "192.168.9.57",
       "turbineType": "850",
       "turbineLocation": "Theni"
     },
@@ -797,20 +573,6 @@
       "plcIp": "192.168.11.17",
       "turbineType": "2000",
       "turbineLocation": "Kayathar"
-    },
-    {
-      "name": "KRV-93",
-      "ip": "192.168.11.10",
-      "plcIp": "192.168.11.9",
-      "turbineType": "2000",
-      "turbineLocation": "Kayathar"
-    },
-    {
-      "name": "LEC-257",
-      "ip": "192.168.7.130",
-      "plcIp": "192.168.7.129",
-      "turbineType": "850",
-      "turbineLocation": "Udumalapet"
     },
     {
       "name": "MAH-685",
@@ -865,13 +627,6 @@
       "name": "MGL-02",
       "ip": "192.168.13.146",
       "plcIp": "192.168.13.145",
-      "turbineType": "850",
-      "turbineLocation": "Ludrwa"
-    },
-    {
-      "name": "MGL-05",
-      "ip": "192.168.13.6",
-      "plcIp": "192.168.13.5",
       "turbineType": "850",
       "turbineLocation": "Ludrwa"
     },
@@ -1525,7 +1280,254 @@
       "plcIp": "192.168.11.217",
       "turbineType": "850",
       "turbineLocation": "Jath"
+    },
+    {
+      "name": "AGT01",
+      "ip": "192.168.5.42",
+      "plcIp": "192.168.5.41",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "AMF-849",
+      "ip": "192.168.18.42",
+      "plcIp": "192.168.18.41",
+      "turbineType": "2000",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "AMM-251",
+      "ip": "192.168.7.210",
+      "plcIp": "192.168.7.209",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "AMM-275",
+      "ip": "192.168.3.82",
+      "plcIp": "192.168.3.81",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "AMP-560",
+      "ip": "192.168.7.26",
+      "plcIp": "192.168.7.25",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "ARVI01",
+      "ip": "192.168.5.124",
+      "plcIp": "192.168.5.123",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "ATLA01",
+      "ip": "192.168.5.50",
+      "plcIp": "192.168.5.49",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "EVER-269",
+      "ip": "192.168.6.90",
+      "plcIp": "192.168.6.89",
+      "turbineType": "850",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "EVER-275",
+      "ip": "192.168.6.93",
+      "plcIp": "192.168.6.92",
+      "turbineType": "850",
+      "turbineLocation": "Tenkasi"
+    },
+    {
+      "name": "GAL-05",
+      "ip": "192.168.10.10",
+      "plcIp": "192.168.10.9",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-03",
+      "ip": "192.168.10.8",
+      "plcIp": "192.168.10.7",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "GAL-02",
+      "ip": "192.168.10.67",
+      "plcIp": "192.168.10.66",
+      "turbineType": "850",
+      "turbineLocation": "Bendawadi"
+    },
+    {
+      "name": "ERDY02",
+      "ip": "192.168.5.98",
+      "plcIp": "192.168.5.97",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 13",
+      "ip": "192.168.9.26",
+      "plcIp": "192.168.9.25",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 14",
+      "ip": "192.168.9.34",
+      "plcIp": "192.168.9.33",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 06",
+      "ip": "192.168.5.226",
+      "plcIp": "192.168.5.225",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 05",
+      "ip": "192.168.5.218",
+      "plcIp": "192.168.5.217",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "JK02",
+      "ip": "192.168.1.34",
+      "plcIp": "192.168.1.33",
+      "turbineType": "850",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "JKC-494",
+      "ip": "192.168.3.90",
+      "plcIp": "192.168.3.89",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "JKC-97",
+      "ip": "192.168.3.114",
+      "plcIp": "192.168.3.113",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "KAMAL",
+      "ip": "192.168.11.122",
+      "plcIp": "192.168.11.121",
+      "turbineType": "850",
+      "turbineLocation": "Panagudi"
+    },
+    {
+      "name": "KPN-609",
+      "ip": "192.168.18.18",
+      "plcIp": "192.168.18.17",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "KRAJ01",
+      "ip": "192.168.9.58",
+      "plcIp": "192.168.9.57",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR26",
+      "ip": "192.168.9.162",
+      "plcIp": "192.168.9.161",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR17",
+      "ip": "192.168.5.170",
+      "plcIp": "192.168.5.169",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 24",
+      "ip": "192.168.9.98",
+      "plcIp": "192.168.9.97",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "MGL-05",
+      "ip": "192.168.13.6",
+      "plcIp": "192.168.13.5",
+      "turbineType": "850",
+      "turbineLocation": "Ludrwa"
+    },
+    {
+      "name": "LEC-257",
+      "ip": "192.168.7.130",
+      "plcIp": "192.168.7.129",
+      "turbineType": "850",
+      "turbineLocation": "Udumalapet"
+    },
+    {
+      "name": "KRV-93",
+      "ip": "192.168.11.10",
+      "plcIp": "192.168.11.9",
+      "turbineType": "2000",
+      "turbineLocation": "Kayathar"
+    },
+    {
+      "name": "KPR 23",
+      "ip": "192.168.9.90",
+      "plcIp": "192.168.9.89",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 12",
+      "ip": "192.168.9.18",
+      "plcIp": "192.168.9.17",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 15",
+      "ip": "192.168.9.42",
+      "plcIp": "192.168.9.41",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 16",
+      "ip": "192.168.9.50",
+      "plcIp": "192.168.9.49",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 19",
+      "ip": "192.168.5.125",
+      "plcIp": "192.168.5.124",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
+    },
+    {
+      "name": "KPR 20",
+      "ip": "192.168.5.180",
+      "plcIp": "192.168.5.179",
+      "turbineType": "850",
+      "turbineLocation": "Theni"
     }
   ],
-  "deletedIPs": []
+  "deletedIPs": [
+    
+  ]
 }

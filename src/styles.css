@@ -50,12 +50,12 @@ nav button:hover {
 .box {
   background: #ffffff;
   border-radius: 12px;
-  padding: 16px;
+  padding: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
   transition: 0.3s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin: 2px;
+  width:84%;          /* 🔥 important */
+  max-width: 220px;     /* 🔥 controls size */
 }
 
 .box:hover {
@@ -137,9 +137,18 @@ nav button:hover {
   transition: 0.2s;
 }
 
+.box .btn-group {
+  display: flex;
+  gap: 6px;
+}
+
+.box .btn-group button {
+  flex: 1;
+}
+
 /* Edit button */
 .box button:first-of-type {
-  background-color: #3498db;
+  background-color: #a2ff6c;
   color: white;
 }
 
@@ -149,7 +158,7 @@ nav button:hover {
 
 /* Delete button */
 .box button:last-of-type {
-  background-color: #e74c3c;
+  background-color: #ff6756;
   color: white;
 }
 
@@ -201,3 +210,12 @@ nav button:hover {
 #home-status {
   display: block;   /* 🔥 VERY IMPORTANT */
 }
+
+#ip-list {
+  display: grid;
+  margin: 2px;
+  padding: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+}
+
