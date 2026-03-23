@@ -27,14 +27,12 @@ let ipData = [];
 let deletedIPs = [];
 
 /* ================= LOAD ================= */
-function loadIPData() { 
-  
+function loadIPData() {
   if (fs.existsSync(DATA_FILE)) {
     const raw = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
     ipData = raw.ipList || [];
     deletedIPs = raw.deletedIPs || [];
   }
- renderSummary(ipData);
 }
 
 /* ================= SAVE ================= */
@@ -98,7 +96,9 @@ app.get("/ping", async (req, res) => {
           ...t,
           ipStatus: ipAlive ? "Connected" : "Disconnected",
           plcStatus: t.plcIp
-            ? plcAlive ? "Connected" : "Disconnected"
+            ? plcAlive
+              ? "Connected"
+              : "Disconnected"
             : "Missing"
         };
       })
@@ -131,7 +131,11 @@ app.post("/add-ip", (req, res) => {
     return res.status(400).json({ message: "Invalid PLC IP" });
   }
 
-  if (ipData.some(e => e.ip === ip || e.plcIp === plcIp)) {
+  if (
+    ipData.some(
+      (e) => e.ip === ip || (plcIp && e.plcIp === plcIp)
+    )
+  ) {
     return res.status(400).json({ message: "Duplicate IP/PLC exists" });
   }
 
@@ -140,7 +144,7 @@ app.post("/add-ip", (req, res) => {
     ip,
     plcIp,
     turbineType,
-    turbineLocation
+    turbineLocation,
   });
 
   saveIPData();
@@ -151,12 +155,11 @@ app.post("/add-ip", (req, res) => {
 app.put("/edit-ip", (req, res) => {
   const { oldIp, name, ip, plcIp, turbineType, turbineLocation } = req.body;
 
-  const index = ipData.findIndex(e => e.ip === oldIp);
+  const index = ipData.findIndex((e) => e.ip === oldIp);
   if (index === -1) {
     return res.status(404).json({ message: "IP not found" });
   }
 
-  // Prevent duplicate when editing
   const duplicate = ipData.some(
     (e, i) =>
       i !== index &&
@@ -173,7 +176,7 @@ app.put("/edit-ip", (req, res) => {
     ip,
     plcIp: plcIp || ipData[index].plcIp,
     turbineType,
-    turbineLocation
+    turbineLocation,
   };
 
   saveIPData();
@@ -182,7 +185,7 @@ app.put("/edit-ip", (req, res) => {
 
 /* ---------- DELETE ---------- */
 app.delete("/delete-ip/:ip", (req, res) => {
-  const index = ipData.findIndex(e => e.ip === req.params.ip);
+  const index = ipData.findIndex((e) => e.ip === req.params.ip);
 
   if (index === -1) {
     return res.status(404).json({ message: "IP not found" });
@@ -202,7 +205,7 @@ app.get("/deleted-ips", (req, res) => {
 
 /* ---------- RESTORE ---------- */
 app.post("/restore-ip/:ip", (req, res) => {
-  const index = deletedIPs.findIndex(e => e.ip === req.params.ip);
+  const index = deletedIPs.findIndex((e) => e.ip === req.params.ip);
 
   if (index === -1) {
     return res.status(404).json({ message: "Not found" });
@@ -217,7 +220,7 @@ app.post("/restore-ip/:ip", (req, res) => {
 
 /* ---------- PERMANENT DELETE ---------- */
 app.delete("/permanently-delete-ip/:ip", (req, res) => {
-  const index = deletedIPs.findIndex(e => e.ip === req.params.ip);
+  const index = deletedIPs.findIndex((e) => e.ip === req.params.ip);
 
   if (index === -1) {
     return res.status(404).json({ message: "Not found" });
@@ -240,17 +243,19 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     const rows = xlsx.utils.sheet_to_json(sheet, { defval: "" });
 
-    let added = 0, duplicates = 0, skipped = 0;
+    let added = 0,
+      duplicates = 0,
+      skipped = 0;
 
-    rows.forEach(row => {
+    rows.forEach((row) => {
       const r = {};
-      Object.keys(row).forEach(k => r[k.trim()] = row[k]);
+      Object.keys(row).forEach((k) => (r[k.trim()] = row[k]));
 
       const name = r["Name"];
       const ip = r["IP"];
       let plcIp = r["PLC IP"];
       const turbineType = r["Turbine Type"];
-      const turbineLocation = r[" "];
+      const turbineLocation = r["Turbine Location"]; // ✅ FIXED
 
       if (!name || !ip || !turbineType || !turbineLocation) {
         skipped++;
@@ -261,7 +266,11 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
         plcIp = generatePlcIp(ip);
       }
 
-      if (ipData.some(e => e.ip === ip || e.plcIp === plcIp)) {
+      if (
+        ipData.some(
+          (e) => e.ip === ip || (plcIp && e.plcIp === plcIp)
+        )
+      ) {
         duplicates++;
         return;
       }
@@ -271,19 +280,23 @@ app.post("/bulk-add", upload.single("file"), (req, res) => {
         ip: String(ip).trim(),
         plcIp: plcIp ? String(plcIp).trim() : null,
         turbineType: String(turbineType).trim(),
-        turbineLocation: String(turbineLocation).trim()
+        turbineLocation: String(turbineLocation).trim(),
       });
 
       added++;
     });
 
     saveIPData();
-    fs.unlinkSync(req.file.path);
+
+    if (fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
 
     res.json({ added, duplicates, skipped });
-
   } catch (err) {
-    fs.unlinkSync(req.file.path); // 🔥 important fix
+    if (fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
     console.error("Bulk upload error:", err);
     res.status(500).json({ error: "Bulk upload failed" });
   }
@@ -298,7 +311,9 @@ app.get("/export-turbines", (req, res) => {
   const fileName = `IP_List_${Date.now()}.xlsx`;
   xlsx.writeFile(wb, fileName);
 
-  res.download(fileName, () => fs.unlinkSync(fileName));
+  res.download(fileName, () => {
+    if (fs.existsSync(fileName)) fs.unlinkSync(fileName);
+  });
 });
 
 /* ---------- SPA ---------- */
