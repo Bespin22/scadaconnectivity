@@ -252,3 +252,7 @@ nav button:hover {
 .summary-box.blue {
   background: #3498db;
 }
+
+.location-count {
+  text-align: right;
+}
