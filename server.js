@@ -16,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 /* ================= STATIC ================= */
-const frontendPath = path.join(__dirname, "dist", "scadaconnectivity");
+const frontendPath = path.join(__dirname, "dist", "scadaconnectivity", "browser");
 app.use(express.static(frontendPath));
 
 /* ================= UPLOAD ================= */
