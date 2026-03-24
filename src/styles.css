@@ -196,12 +196,15 @@ nav button:hover {
   display:inline;
 }
 .site-header {
-  width: 100%;
+   display: flex;
+  justify-content: space-between;   /* 🔥 LEFT + RIGHT */
+  align-items: center;
+
   background: #000;
   color: #00ff88;
-  padding: 10px;
+  padding: 10px 15px;
   font-weight: bold;
-  margin-bottom: 10px;
+
   border-top: 2px solid #00ff88;
   border-bottom: 2px solid #00ff88;
 }
@@ -256,4 +259,15 @@ nav button:hover {
 
 .location-count {
   text-align: right;
+}
+
+/* site name */
+
+.site-name {
+  font-size: 16px;
+}
+
+.site-count {
+  font-size: 14px;
+  opacity: 0.8;
 }
