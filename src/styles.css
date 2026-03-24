@@ -196,7 +196,7 @@ nav button:hover {
   display:inline;
 }
 .site-header {
-   display: flex;
+  display: flex;
   justify-content: space-between;   /* 🔥 LEFT + RIGHT */
   align-items: center;
 
@@ -255,10 +255,6 @@ nav button:hover {
 
 .summary-box.blue {
   background: #3498db;
-}
-
-.location-count {
-  text-align: right;
 }
 
 /* site name */
