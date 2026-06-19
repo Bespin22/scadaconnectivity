@@ -19,6 +19,9 @@
 <!-- ================= HOME ================= -->
 <section id="home" class="section">
   <h2>Home – Turbine Connectivity</h2>
+  <span class="site-count">
+  Total: ${turbines.length}
+</span>
 <div id="summary-bar" class="summary-bar"></div>
   <label>Filter by Location:</label>
   <select id="location-filter">
@@ -122,33 +125,36 @@ async function loadPingData() {
 function renderHome(data) {
   const div = document.getElementById("home-status");
 
+  // Group by site
   const grouped = {};
-
   data.forEach(t => {
-    if (!grouped[t.turbineLocation]) {
-      grouped[t.turbineLocation] = [];
-    }
-    grouped[t.turbineLocation].push(t);
+    const site = t.turbineLocation || "Unknown";
+    if (!grouped[site]) grouped[site] = [];
+    grouped[site].push(t);
   });
+
+  // Sort sites
+  const sortedSites = Object.keys(grouped).sort();
 
   let html = "";
 
-  Object.keys(grouped).sort().forEach(location => {
-    html += `
-      <div class="site-section">   <!-- ✅ FULL WIDTH BLOCK -->
+  sortedSites.forEach(site => {
+    const turbines = grouped[site];
 
+    html += `
+      <div class="site-section">
+        
+        <!-- 🔥 HEADER -->
         <div class="site-header">
-          ${location} )
-          <div class="location-count">
-           (${grouped[location].length}Turbines)
-           
-             </div>
+          <span class="site-name">${site}</span>
+          <span class="site-count">${turbines.length} Turbines</span>
         </div>
 
+        <!-- TURBINES -->
         <div class="site-grid">
-          ${grouped[location].map(t => `
+          ${turbines.map(t => `
             <div class="box modern-box">
-
+              
               <div class="status ip ${t.ipStatus==="Connected"?"green":"red"}">
                 IP: ${t.ip}
               </div>
